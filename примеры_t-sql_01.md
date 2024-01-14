@@ -42,7 +42,6 @@ INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'кг', N'Килогра
 INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'л', N'Литр')
 INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'м', N'Метр')
 INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'шт', N'Штука')
-/**** Object: <pre>  Table [dbo].[m_supplier]    Script Date: <pre> 07/24/2013 08: <pre>50: <pre>32 ****/
 SET ANSI_NULLS ON
 GO
 	
@@ -67,7 +66,6 @@ INSERT [dbo].[m_supplier] ([id], [title], [phone], [address])
 VALUES (2, N'ООО "Сладкое"', N'1213', NULL)
 INSERT [dbo].[m_supplier] ([id], [title], [phone], [address]) 
 VALUES (3, N'ИП Каримов А.Б.', N'12345', NULL)
-/**** Object: <pre>  Table [dbo].[m_product]    Script Date: <pre> 07/24/2013 08: <pre>50: <pre>32 ****/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +107,6 @@ INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lif
 VALUES (10, N'Батон', 3, 5, N'шт', 1)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
 VALUES (11, N'Сметана', 1, 1, N'шт', 2)
-/**** Object: <pre>  Table [dbo].[m_outcome]    Script Date: <pre> 07/24/2013 08: <pre>50: <pre>32 ****/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +147,6 @@ INSERT [dbo].[m_outcome] ([id], [dt], [product_id], [amount], [price])
 VALUES (12, CAST(0x00009F1300000000 AS DateTime), 11, 4, 5.5)
 INSERT [dbo].[m_outcome] ([id], [dt], [product_id], [amount], [price]) 
 VALUES (14, CAST(0x00009F0000000000 AS DateTime), 4, 23, 11.2)
-/**** Object: <pre>  Table [dbo].[m_income]    Script Date: <pre> 07/24/2013 08: <pre>50: <pre>32 ****/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +203,6 @@ INSERT [dbo].[m_income] ([id], [dt], [product_id], [amount], [price])
 VALUES (44, CAST(0x00009F0700000000 AS DateTime), 8, 450, 3.1)
 INSERT [dbo].[m_income] ([id], [dt], [product_id], [amount], [price]) 
 VALUES (45, CAST(0x00009EFF00000000 AS DateTime), 5, 535, 12.35)
-/**** Object: <pre>  Table [dbo].[m_category]    Script Date: <pre> 07/24/2013 08: <pre>50: <pre>32 ****/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
