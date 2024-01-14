@@ -20,7 +20,9 @@ SIZE = 10,
 MAXSIZE = 100,
 FILEGROWTH = 5
 ) 
-
+</pre>
+Создаем таблицу 
+<pre>
 USE [TestDB]
 GO
 
@@ -33,6 +35,9 @@ CREATE TABLE [dbo].[m_unit](
 	[description] [nvarchar](30) NULL
 ) ON [PRIMARY]
 GO
+</pre>
+Вносим данные 
+<pre>	
 INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'кг', N'Килограмм')
 INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'л', N'Литр')
 INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'м', N'Метр')
@@ -40,8 +45,12 @@ INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'шт', N'Штука')
 /**** Object: <pre>  Table [dbo].[m_supplier]    Script Date: <pre> 07/24/2013 08: <pre>50: <pre>32 ****/
 SET ANSI_NULLS ON
 GO
+	
 SET QUOTED_IDENTIFIER ON
 GO
+</pre>
+Создаем таблицу 
+<pre>	
 CREATE TABLE [dbo].[m_supplier](
 	[id] [int] NOT NULL,
 	[title] [nvarchar](30) NOT NULL,
@@ -49,6 +58,9 @@ CREATE TABLE [dbo].[m_supplier](
 	[address] [nvarchar](255) NULL
 ) ON [PRIMARY]
 GO
+</pre>
+Вносим данные 
+<pre>	
 INSERT [dbo].[m_supplier] ([id], [title], [phone], [address]) 
 VALUES (1, N'ЗАО Комбинат "Огого"', N'1212', NULL)
 INSERT [dbo].[m_supplier] ([id], [title], [phone], [address]) 
@@ -60,6 +72,9 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+</pre>
+Создаем таблицу 
+<pre>	
 CREATE TABLE [dbo].[m_product](
 	[id] [int] NOT NULL,
 	[title] [nvarchar](30) NOT NULL,
@@ -69,6 +84,9 @@ CREATE TABLE [dbo].[m_product](
 	[lifedays] [int] NULL
 ) ON [PRIMARY]
 GO
+</pre>
+Вносим данные 
+<pre>
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
 VALUES (1, N'Шоколад плиточный', 1, 4, N'шт', 90)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
@@ -96,6 +114,9 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+</pre>
+Создаем таблицу 
+<pre>	
 CREATE TABLE [dbo].[m_outcome](
 	[id] [int] NOT NULL,
 	[dt] [datetime] NULL,
@@ -104,6 +125,9 @@ CREATE TABLE [dbo].[m_outcome](
 	[price] [float] NOT NULL
 ) ON [PRIMARY]
 GO
+</pre>
+Вносим данные 
+<pre>	
 INSERT [dbo].[m_outcome] ([id], [dt], [product_id], [amount], [price]) 
 VALUES (1, CAST(0x00009F0000000000 AS DateTime), 1, 10, 12.7)
 INSERT [dbo].[m_outcome] ([id], [dt], [product_id], [amount], [price]) 
@@ -131,6 +155,9 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+</pre>
+Создаем таблицу 
+<pre>	
 CREATE TABLE [dbo].[m_income](
 	[id] [int] NOT NULL,
 	[dt] [datetime] NULL,
@@ -139,6 +166,9 @@ CREATE TABLE [dbo].[m_income](
 	[price] [float] NOT NULL
 ) ON [PRIMARY]
 GO
+</pre>
+Вносим данные 
+<pre>	
 INSERT [dbo].[m_income] ([id], [dt], [product_id], [amount], [price]) 
 VALUES (26, CAST(0x00009E5E00000000 AS DateTime), 1, 1000, 12.5)
 INSERT [dbo].[m_income] ([id], [dt], [product_id], [amount], [price]) 
@@ -182,11 +212,17 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+</pre>
+Создаем таблицу 
+<pre>	
 CREATE TABLE [dbo].[m_category](
 	[id] [int] NOT NULL,
 	[title] [nvarchar](30) NOT NULL
 ) ON [PRIMARY]
 GO
+</pre>
+Вносим данные 
+<pre>	
 INSERT [dbo].[m_category] ([id], [title]) 
 VALUES (1, N'Молочные продукты')
 INSERT [dbo].[m_category] ([id], [title]) 
