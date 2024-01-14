@@ -295,7 +295,7 @@ SELECT first_name
 first_name | status
 Jennifer | Left the company at 31 of December, 2006
 Clara | Currently Working
-<pre> 
+ 
 SELECT first_name,
        NVL2 (
            end_date,
@@ -313,7 +313,7 @@ SELECT first_name,
        JOIN locations USING (location_id)
        JOIN countries USING (country_id)
        JOIN regions USING (region_id)
- WHERE region_name = 'Europe';   </pre>     
+ WHERE region_name = 'Europe';       
  SELECT first_name
   FROM employees  e
        JOIN departments d ON (e.department_id = d.department_id)
