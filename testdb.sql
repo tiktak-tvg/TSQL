@@ -17,7 +17,7 @@ MAXSIZE = 100,
 FILEGROWTH = 5
 );
 Go
--- Создаем таблицу
+-- РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ
 
 USE [TestDB]
 GO
@@ -31,19 +31,19 @@ CREATE TABLE [dbo].[m_unit](
 	[description] [nvarchar](30) NULL
 ) ON [PRIMARY]
 GO
--- Вносим данные
+-- Р’РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ
 
 	
-INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'кг', N'Килограмм')
-INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'л', N'Литр')
-INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'м', N'Метр')
-INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'шт', N'Штука')
+INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'РєРі', N'РљРёР»РѕРіСЂР°РјРј')
+INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'Р»', N'Р›РёС‚СЂ')
+INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'Рј', N'РњРµС‚СЂ')
+INSERT [dbo].[m_unit] ([title], [description]) VALUES (N'С€С‚', N'РЁС‚СѓРєР°')
 SET ANSI_NULLS ON
 GO
 	
 SET QUOTED_IDENTIFIER ON
 GO
--- Создаем таблицу
+-- РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ
 
 	
 CREATE TABLE [dbo].[m_supplier](
@@ -53,20 +53,20 @@ CREATE TABLE [dbo].[m_supplier](
 	[address] [nvarchar](255) NULL
 ) ON [PRIMARY]
 GO
--- Вносим данные
+-- Р’РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ
 
 	
 INSERT [dbo].[m_supplier] ([id], [title], [phone], [address]) 
-VALUES (1, N'ЗАО Комбинат "Огого"', N'1212', NULL)
+VALUES (1, N'Р—РђРћ РљРѕРјР±РёРЅР°С‚ "РћРіРѕРіРѕ"', N'1212', NULL)
 INSERT [dbo].[m_supplier] ([id], [title], [phone], [address]) 
-VALUES (2, N'ООО "Сладкое"', N'1213', NULL)
+VALUES (2, N'РћРћРћ "РЎР»Р°РґРєРѕРµ"', N'1213', NULL)
 INSERT [dbo].[m_supplier] ([id], [title], [phone], [address]) 
-VALUES (3, N'ИП Каримов А.Б.', N'12345', NULL)
+VALUES (3, N'РРџ РљР°СЂРёРјРѕРІ Рђ.Р‘.', N'12345', NULL)
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- Создаем таблицу
+-- РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ
 
 	
 CREATE TABLE [dbo].[m_product](
@@ -78,35 +78,35 @@ CREATE TABLE [dbo].[m_product](
 	[lifedays] [int] NULL
 ) ON [PRIMARY]
 GO
--- Вносим данные
+-- Р’РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ
 
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (1, N'Шоколад плиточный', 1, 4, N'шт', 90)
+VALUES (1, N'РЁРѕРєРѕР»Р°Рґ РїР»РёС‚РѕС‡РЅС‹Р№', 1, 4, N'С€С‚', 90)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (2, N'Конфеты Карамель', 3, 4, N'кг', 90)
+VALUES (2, N'РљРѕРЅС„РµС‚С‹ РљР°СЂР°РјРµР»СЊ', 3, 4, N'РєРі', 90)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (3, N'Молоко', 2, 1, N'л', 2)
+VALUES (3, N'РњРѕР»РѕРєРѕ', 2, 1, N'Р»', 2)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (4, N'Масло сливочное, упаковка', 2, 2, N'шт', 30)
+VALUES (4, N'РњР°СЃР»Рѕ СЃР»РёРІРѕС‡РЅРѕРµ, СѓРїР°РєРѕРІРєР°', 2, 2, N'С€С‚', 30)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (5, N'Масло растительное, бутылка', 3, 2, N'шт', 90)
+VALUES (5, N'РњР°СЃР»Рѕ СЂР°СЃС‚РёС‚РµР»СЊРЅРѕРµ, Р±СѓС‚С‹Р»РєР°', 3, 2, N'С€С‚', 90)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (6, N'Масло сливочное, развесное', 1, 2, N'кг', 10)
+VALUES (6, N'РњР°СЃР»Рѕ СЃР»РёРІРѕС‡РЅРѕРµ, СЂР°Р·РІРµСЃРЅРѕРµ', 1, 2, N'РєРі', 10)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (7, N'Мясо говяжье', 1, 3, N'кг', 5)
+VALUES (7, N'РњСЏСЃРѕ РіРѕРІСЏР¶СЊРµ', 1, 3, N'РєРі', 5)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (8, N'кефир, упаковка', 1, 1, N'шт', 2)
+VALUES (8, N'РєРµС„РёСЂ, СѓРїР°РєРѕРІРєР°', 1, 1, N'С€С‚', 2)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (9, N'Хлеб', 2, 5, N'шт', 1)
+VALUES (9, N'РҐР»РµР±', 2, 5, N'С€С‚', 1)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (10, N'Батон', 3, 5, N'шт', 1)
+VALUES (10, N'Р‘Р°С‚РѕРЅ', 3, 5, N'С€С‚', 1)
 INSERT [dbo].[m_product] ([id], [title], [supplier_id], [ctgry_id], [unit], [lifedays]) 
-VALUES (11, N'Сметана', 1, 1, N'шт', 2)
+VALUES (11, N'РЎРјРµС‚Р°РЅР°', 1, 1, N'С€С‚', 2)
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- Создаем таблицу
+-- РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ
 
 	
 CREATE TABLE [dbo].[m_outcome](
@@ -117,7 +117,7 @@ CREATE TABLE [dbo].[m_outcome](
 	[price] [float] NOT NULL
 ) ON [PRIMARY]
 GO
--- Вносим данные
+-- Р’РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ
 
 	
 INSERT [dbo].[m_outcome] ([id], [dt], [product_id], [amount], [price]) 
@@ -146,7 +146,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- Создаем таблицу
+-- РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ
 
 	
 CREATE TABLE [dbo].[m_income](
@@ -157,7 +157,7 @@ CREATE TABLE [dbo].[m_income](
 	[price] [float] NOT NULL
 ) ON [PRIMARY]
 GO
--- Вносим данные
+-- Р’РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ
 
 	
 INSERT [dbo].[m_income] ([id], [dt], [product_id], [amount], [price]) 
@@ -202,7 +202,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- Создаем таблицу
+-- РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ
 
 	
 CREATE TABLE [dbo].[m_category](
@@ -210,17 +210,17 @@ CREATE TABLE [dbo].[m_category](
 	[title] [nvarchar](30) NOT NULL
 ) ON [PRIMARY]
 GO
--- Вносим данные
+-- Р’РЅРѕСЃРёРј РґР°РЅРЅС‹Рµ
 
 	
 INSERT [dbo].[m_category] ([id], [title]) 
-VALUES (1, N'Молочные продукты')
+VALUES (1, N'РњРѕР»РѕС‡РЅС‹Рµ РїСЂРѕРґСѓРєС‚С‹')
 INSERT [dbo].[m_category] ([id], [title]) 
-VALUES (2, N'Масло, жир')
+VALUES (2, N'РњР°СЃР»Рѕ, Р¶РёСЂ')
 INSERT [dbo].[m_category] ([id], [title]) 
-VALUES (3, N'Мясо')
+VALUES (3, N'РњСЏСЃРѕ')
 INSERT [dbo].[m_category] ([id], [title]) 
-VALUES (4, N'Кондитерские изделия')
+VALUES (4, N'РљРѕРЅРґРёС‚РµСЂСЃРєРёРµ РёР·РґРµР»РёСЏ')
 INSERT [dbo].[m_category] ([id], [title]) 
-VALUES (5, N'Хлебобулочные изделия');
+VALUES (5, N'РҐР»РµР±РѕР±СѓР»РѕС‡РЅС‹Рµ РёР·РґРµР»РёСЏ');
 Go
