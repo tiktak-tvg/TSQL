@@ -78,11 +78,11 @@ SELECT *
 </pre>
 
 
-#### Задача 11. Получить список всех сотрудников у которых в имени содержится символ '%'
+#### Задача 11. Получить список всех сотрудников у которых в имени содержится символ 'c'
 <pre> 
 SELECT *
   FROM employees
- WHERE first_name LIKE '%\%%' ESCAPE '\';
+ WHERE first_name LIKE '%\c%' ESCAPE '\';
 </pre>
 
 
@@ -94,9 +94,10 @@ SELECT DISTINCT manager_id
 </pre>
 
 
-#### Задача 13. Получить список работников с их позициями в формате: Donald(sh_clerk)
+#### Задача 13. Получить список работников с их позициями:
 <pre> 
-SELECT first_name || '(' || LOWER (job_id) || ')' employee FROM employees; Oracl
+
+  ; 
 </pre>
 
 
@@ -115,15 +116,15 @@ SELECT *
 <pre> 
 SELECT *
   FROM employees
- WHERE INSTR (LOWER (first_name), 'b') > 0;
+  WHERE first_name LIKE '%\b%' ESCAPE '\';;
 </pre>
 
 
-#### Задача 16. Получить список всех сотрудников у которых в имени содержатся минимум 2 буквы 'a'
+#### Задача 16. Получить список всех сотрудников у которых в имени содержатся минимум 2 буквы 'e'
 <pre> 
 SELECT *
   FROM employees
- WHERE INSTR (LOWER (first_name),'a',1,2) > 0;
+ WHERE first_name LIKE '%\ee%' ESCAPE '\';
 </pre>
 
 
