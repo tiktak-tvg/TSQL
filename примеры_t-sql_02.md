@@ -96,7 +96,7 @@ SELECT DISTINCT manager_id
 
 #### Задача 13. Получить список работников с их позициями в формате: Donald(sh_clerk)
 <pre> 
-SELECT first_name || '(' || LOWER (job_id) || ')' employee FROM employees;
+SELECT first_name || '(' || LOWER (job_id) || ')' employee FROM employees; Oracl
 </pre>
 
 
@@ -107,7 +107,7 @@ SELECT first_name || '(' || LOWER (job_id) || ')' employee FROM employees;
 <pre> 
 SELECT *
   FROM employees
- WHERE LENGTH (first_name) > 10;
+ WHERE LEN(first_name) > 10;
 </pre>
 
 
