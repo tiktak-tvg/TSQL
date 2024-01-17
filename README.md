@@ -1,4 +1,4 @@
-![image](https://github.com/tvgVita69/t-sql/assets/98489171/f0bae4e0-a0b7-4346-aa3d-ca7d041f16bf)
+![image](https://github.com/tvgVita69/t-sql/assets/98489171/95362540-6d71-4f9e-a590-165d35a853eb)
 
 ![Corporation](https://github.com/tvgVita69/t-sql/assets/98489171/f73c96d9-8c17-4b02-9fdc-ec344ec3f3a7)
 
