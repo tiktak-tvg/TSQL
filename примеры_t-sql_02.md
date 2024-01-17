@@ -126,7 +126,11 @@ SELECT *
   FROM employees
  WHERE first_name LIKE '%\ee%' ESCAPE '\';
 </pre>
-
+<pre>
+SELECT *
+  FROM employees
+ WHERE first_name LIKE '%\e%\e%' ESCAPE '\';
+</pre>
 
 #### Задача 17. Получить список всех сотрудников зарплата которых кратна 1000
 <pre> 
