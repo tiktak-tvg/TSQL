@@ -235,8 +235,11 @@ VALUES (5, N'Хлебобулочные изделия')
 
 #### Задача  1. Пример Запроса для получения только нужных полей в нужной последовательности: 
 <pre>
+Use TestDB;
+Go
 SELECT dt, product_id, amount
-FROM [TestDB].[dbo].[m_income]; 
+FROM [TestDB].[dbo].[m_income];
+Go	
 </pre>
 
 #### Задача 2. В этом примере Запроса SQL символ звездочки (*) использован для вывода всех столбцов таблицы m_product, иначе говоря, для получения всех полей отношения m_product: 
@@ -291,7 +294,7 @@ ON m_income.product_id=m_product.id;
 SELECT dt, product_id, title, amount, price
 FROM TestDB.dbo.m_income INNER JOIN TestDB.dbo.m_product 
 ON m_income.product_id=m_product.id
-WHERE title='Молоко' And dt='2011-06-12'; 
+WHERE title='Молоко' And dt='20110612'; 
 </pre>
 
 #### Задача 10. Инструкция BETWEEN используется для проверки принадлежности некоторому диапазону значений. Пример Запроса SQL, выводящий информацию о товарах, поступивших между 1-м и 30-м июнем 2011 года:
@@ -299,7 +302,7 @@ WHERE title='Молоко' And dt='2011-06-12';
 SELECT *
 FROM TestDB.dbo.m_income INNER JOIN TestDB.dbo.m_product 
 ON m_income.product_id=m_product.id
-WHERE dt BETWEEN '2011-06-01' And '2011-06-30'; 
+WHERE dt BETWEEN '20110601' And '20110630'; 
 </pre>
 
 Один Запрос SQL можно вкладывать в другой. Под Запрос - есть не что иное, как Запрос внутри Запроса. Обычно, под Запрос используется в конструкции WHERE. Но возможны и другие способы использования под Запросов.
@@ -373,7 +376,7 @@ FROM m_income;
 <pre>
 SELECT Sum(amount*price) AS income_sum
 FROM m_income
-WHERE product_id=1 AND dt BETWEEN '2011-06-01' AND '2011-06-30'; 
+WHERE product_id=1 AND dt BETWEEN '20110601' AND '20110630'; 
 </pre>
 
 #### Задача 21. Следующий  Запрос SQL вычисляет на какую сумму было продано товаров, имеющих код 4 или 6: 
@@ -387,7 +390,7 @@ WHERE product_id=4 OR product_id=6;
 <pre>
 SELECT Sum(amount*price) AS outcome_sum
 FROM m_outcome
-WHERE (product_id=4 OR product_id=6) AND dt='2011-06-12'; 
+WHERE (product_id=4 OR product_id=6) AND dt='20110612'; 
 </pre>
 
 #### Задача 23. Задача такова. Вычислить на какую общую сумму было оприходовано товаров категории "Хлебобулочные изделия".
@@ -466,7 +469,7 @@ HAVING Sum(amount)>=500;
 <pre>
 SELECT title, SUM(amount*price) AS income_sum
 FROM m_income a INNER JOIN m_product b ON a.product_id=b.id
-WHERE dt BETWEEN '2011-04-01' AND '2011-06-30'
+WHERE dt BETWEEN '20110401' AND '20110630'
 GROUP BY title
 HAVING SUM(amount*price)>=1000; 
 </pre>
@@ -574,7 +577,7 @@ FROM (SELECT SUM(amount*price) AS s_amount FROM m_outcome GROUP BY product_id)t)
 <pre>
 SELECT dt, product_id, amount, 
 CASE 
-   WHEN amount<500 THEN 'малая' ELSE 'большая' 
+   WHEN amount<500 THEN N'малая' ELSE N'большая'
 END AS mark
 FROM m_income; 
 </pre>
