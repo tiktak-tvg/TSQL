@@ -99,13 +99,10 @@ SELECT DISTINCT manager_id
 </pre>
 
 
-#### Задача 13. Получить список работников с их позициями:
+#### Задача 13. Получить список работников:
 <pre> 
 
-  ; 
 </pre>
-
-
 
 ## Использование однострочных функций для настройки вывода
 
@@ -121,7 +118,7 @@ SELECT *
 <pre> 
 SELECT *
   FROM employees
-  WHERE first_name LIKE '%\b%' ESCAPE '\';;
+  WHERE first_name LIKE '%\b%' ESCAPE '\';
 </pre>
 
 
@@ -139,27 +136,25 @@ SELECT *
 
 #### Задача 17. Получить список всех сотрудников зарплата которых кратна 1000
 <pre> 
-SELECT *
+SELECT salary
   FROM employees
- WHERE MOD (salary, 1000) = 0;
+ WHERE (salary % 100)=0;
 </pre>
 
 
-#### Задача 18. Получить первое 3х значное число телефонного номера сотрудника если его номер в формате ХХХ.ХХХ.ХХХХ
+#### Задача 18. Получить первое 2х значное число телефонного номера сотрудника если его номер в формате ХХ.ХХХX.ХХXXХХ
 <pre> 
-SELECT phone_number, SUBSTR (phone_number, 1, 3) new_phone_number
+SELECT phone_number As new_phone_number
   FROM employees
- WHERE phone_number LIKE '___.___.____';
+ WHERE phone_number LIKE '%__.____.______';
 </pre>
 
 
 #### Задача 19. Получить первое слово из имени департамента для тех у кого в названии больше одного слова
 <pre> 
-SELECT department_name,
-       SUBSTR (department_name, 1, INSTR (department_name, ' ')-1)
-           first_word
+SELECT department_name
   FROM departments
- WHERE INSTR (department_name, ' ') > 0;
+ WHERE department_name like '%[ ]%';
 </pre>
 
 
@@ -174,40 +169,31 @@ SELECT first_name, SUBSTR (first_name, 2, LENGTH (first_name) - 2) new_name
 <pre> 
 SELECT *
   FROM employees
- WHERE SUBSTR (first_name, -1) = 'm' AND LENGTH(first_name)>5;
+ WHERE first_name like '%m' AND LEN(first_name) > 5;
 </pre>
 
 
-#### Задача 22. Получить дату следующей пятницы
+#### Задача 22. Получить следующую дату 
 <pre> 
-SELECT NEXT_DAY (SYSDATE, 'FRIDAY') next_friday FROM DUAL;
+SELECT DATEADD(d,0,DATEDIFF(d,0,GETDATE()));
 </pre>
 
 
 #### Задача 23. Получить список всех сотрудников которые работают в компании больше 17 лет
 <pre> 
-SELECT *
-  FROM employees
- WHERE MONTHS_BETWEEN (SYSDATE, hire_date) / 12 > 17;
+
 </pre>
 
 
 #### Задача 24. Получить список всех сотрудников у которых последня цифра телефонного номера нечетная и состоит из 3ех чисел разделенных точкой
 <pre> 
-SELECT *
-  FROM employees
- WHERE     MOD (SUBSTR (phone_number, -1), 2) != 0
-       AND INSTR (phone_number,'.',1,3) = 0
-       AND INSTR (phone_number,'.',1,2) > 0;
+
 </pre>
 
 
 #### Задача 25. Получить список всех сотрудников у которых в значении job_id после знака '_' как минимум 3 символа но при этом это значение после '_' не равно 'CLERK'
 <pre> 
-SELECT *
-  FROM employees
- WHERE     LENGTH (SUBSTR (job_id, INSTR (job_id, '_') + 1)) > 3
-       AND SUBSTR (job_id, INSTR (job_id, '_') + 1) != 'CLERK';
+
 </pre>
 
 
