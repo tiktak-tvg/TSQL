@@ -1,7 +1,7 @@
---1. Переходим в базу данных master
+--1. РџРµСЂРµС…РѕРґРёРј РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… master
 Use master;
 Go
---2. Проверяем на наличие базы данных HRdb и создаем её
+--2. РџСЂРѕРІРµСЂСЏРµРј РЅР° РЅР°Р»РёС‡РёРµ Р±Р°Р·С‹ РґР°РЅРЅС‹С… HRdb Рё СЃРѕР·РґР°РµРј РµС‘
 If DB_ID('HRdb') Is Null
 	Begin
 		Create Database HRdb
@@ -27,12 +27,12 @@ If DB_ID('HRdb') Is Null
 					FileGrowth = 1Mb					
 				)
 Collate SQL_Latin1_General_CP1251_CI_AS;
-	Print N'База данных создана :)';
+	Print N'Р‘Р°Р·Р° РґР°РЅРЅС‹С… СЃРѕР·РґР°РЅР° :)';
 	End;
 Else
 	Begin
 		Drop Database HRdb;
-		Print N'База данных Была удалена :(';
+		Print N'Р‘Р°Р·Р° РґР°РЅРЅС‹С… Р‘С‹Р»Р° СѓРґР°Р»РµРЅР° :(';
 	End;
 Go
 --Select collation_name from sys.databases
@@ -41,7 +41,7 @@ Go
 Exec sp_dbcmptlevel @dbname = 'HRdb', @new_cmptlevel =100; --2008
 Go
 
---3. Подключаем базу данных
+--3. РџРѕРґРєР»СЋС‡Р°РµРј Р±Р°Р·Сѓ РґР°РЅРЅС‹С…
 Use HRdb;
 Go
 
@@ -161,7 +161,7 @@ CREATE UNIQUE INDEX emp_emp_id_pk
 	ON employees (employee_id);
 Go
 
--- Создание внешнего ключа на первичный ключ
+-- РЎРѕР·РґР°РЅРёРµ РІРЅРµС€РЅРµРіРѕ РєР»СЋС‡Р° РЅР° РїРµСЂРІРёС‡РЅС‹Р№ РєР»СЋС‡
 ALTER TABLE job_history
 	ADD CONSTRAINT FK_job_history_emp
 		Foreign Key(employee_id) References employees(employee_id)
@@ -183,7 +183,7 @@ ALTER TABLE departments
 Go
 
 
---Создание внешнего ключа в существующей таблице
+--РЎРѕР·РґР°РЅРёРµ РІРЅРµС€РЅРµРіРѕ РєР»СЋС‡Р° РІ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµР№ С‚Р°Р±Р»РёС†Рµ
 --ALTER TABLE job_history
 --ADD CONSTRAINT FK_job_history_id FOREIGN KEY(job_history_id) 
 --    REFERENCES employees(employee_id) 
