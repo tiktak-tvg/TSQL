@@ -112,12 +112,163 @@ SELECT Day(hire_Date) As N'дни', COUNT (*) As N'кол. сотруднико�
 GROUP BY Day(hire_Date)
 ORDER BY 2 DESC;  
 ```
+#### Задача 14. Получить репорт сколько сотрудников приняли на работу по годам. Сортировать по количеству
+``` 
+SELECT Year(hire_date) As N'год', COUNT (*) As N'кол. сотрудников'
+    FROM employees
+GROUP BY Year(hire_date); 
+Go
+```
+#### Задача 15. Получить количество департаментов в котором есть сотрудники
+``` 
+SELECT department_id, (COUNT (*)) As N'кол. сотрудников'     
+    FROM employees
+   WHERE department_id IS NOT NULL
+GROUP BY department_id; 
+```
+#### Задача 16. Получить список department_id в котором работают больше 30 сотрудников
+``` 
+SELECT department_id
+    FROM employees
+GROUP BY department_id
+  HAVING COUNT (*) > 30;  
+```
+#### Задача 17. Получить список department_id и округленную среднюю зарплату работников в каждом департаменте.
+``` 
+SELECT department_id, AVG(salary) As avg_salary
+    FROM employees
+GROUP BY department_id; 
+Go
+```
+#### Задача 18. Получить список region_id сумма всех букв всех country_name в котором больше 60ти
+```
+SELECT region_id
+    FROM countries
+GROUP BY region_id
+  HAVING SUM(LEN(country_name)) > 60;  
+```
+#### Задача 19. Получить список department_id в котором работают работники нескольких (>1) job_id
+``` 
+SELECT department_id
+    FROM employees
+GROUP BY department_id
+  HAVING COUNT(DISTINCT job_id) > 1;
+```
+#### Задача 20. Получить список manager_id у которых количество подчиненных больше 5 и сумма всех зарплат его подчиненных больше 50000
+``` 
+SELECT manager_id
+    FROM employees
+GROUP BY manager_id
+  HAVING COUNT (*) > 5 AND SUM (salary) > 50000;  
+```
+#### Задача 21. Получить список manager_id у которых средняя зарплата всех его подчиненных находится в промежутке от 6000 до 9000 которые получают бонусы меньше 100(commission_pct > 100)
+``` 
+SELECT manager_id, AVG(salary) As avg_salary
+    FROM employees
+WHERE commission_pct > '100'
+GROUP BY manager_id
+HAVING AVG(salary) BETWEEN '2000' AND '9000';  
+```
+#### Задача 22. Получить максимальную зарплату из всех сотрудников job_id которыз заканчивается на слово 'CLERK'
+``` 
+SELECT MAX(salary) As max_salary
+  FROM employees
+ WHERE job_id LIKE '%CLERK';       
+SELECT MAX(salary)
+  FROM employees
+ WHERE job_id = 'CLERK';  
+```
+#### Задача 23. Получить максимальную зарплату среди всех средних зарплат по департаменту
+``` 
+SELECT AVG(salary)
+    FROM employees
+ORDER BY MAX(department_id);
+Go
+```
+#### Задача 24. Получить количество сотрудников с одинаковым количеством букв в имени. При этом показать только тех у кого длина имени больше 5 и количество сотрудников с таким именем больше 20. Сортировать по длинне имени
+``` 
+SELECT LEN(first_name) As N'длина имени', COUNT (*) As N'количество сотрудников'
+    FROM employees
+GROUP BY LEN(first_name)
+  HAVING LEN(first_name) > 5 AND COUNT (*) > 20
+ORDER BY LEN(first_name);     
+  SELECT LEN(first_name), COUNT (*)
+    FROM employees
+   WHERE LEN(first_name) > 5
+GROUP BY LEN(first_name)
+  HAVING COUNT (*) > 20
+ORDER BY LEN(first_name);  
+Go
+```
+#### Задача 25. Departaments, Locations, Countries, Regions. Получить список регионов и количество сотрудников в каждом регионе
+``` 
+SELECT region_name, COUNT (*)
+    FROM employees e
+         JOIN departments d ON (e.department_id = d.department_id)
+         JOIN locations l ON (d.location_id = l.location_id)
+         JOIN countries c ON (l.country_id = c.country_id)
+         JOIN regions r ON (c.region_id = r.region_id)
+GROUP BY region_name; 
+```
+#### Задача 26. Departaments, Locations, Countries, Regions. Получить детальную информацию о каждом сотруднике:
+- First_name, Last_name, Departament, Job, Street, Country, Region
+``` 
+SELECT First_name,
+       Last_name,
+       Department_name,
+       Job_id,
+       street_address,
+       Country_name,
+       Region_name
+  FROM employees  e
+       JOIN departments d ON (e.department_id = d.department_id)
+       JOIN locations l ON (d.location_id = l.location_id)
+       JOIN countries c ON (l.country_id = c.country_id)
+       JOIN regions r ON (c.region_id = r.region_id);  
+```
+#### Задача 27. Departaments. Показать все департаменты в которых работают больше 30ти сотрудников
+``` 
+SELECT department_name, COUNT (*)
+    FROM employees e JOIN departments d ON (e.department_id = d.department_id)
+GROUP BY department_name
+  HAVING COUNT (*) > 30;
+```
+#### Задача 28. Departaments. Показать все департаменты в которых нет ни одного сотрудника
+``` 
+SELECT department_name
+  FROM employees  e
+       RIGHT JOIN departments d ON (e.department_id = d.department_id)
+ WHERE first_name IS NULL;  
+```
+#### Задача 29. Jobs, Departaments. Показать сотрудников в формате: First_name, Job_title, Department_name.
+> Пример: First_name | Job_title | Department_name Donald | Shipping | Clerk Shipping
 
+```
+SELECT first_name, job_title, department_name
+  FROM employees  e
+       JOIN jobs j ON (e.job_id = j.job_id)
+       JOIN departments d ON (d.department_id = e.department_id);  
+```
+#### Задача 30. Departaments. Показать сотрудников которые работают в департаменте IT
+``` 
+SELECT *
+  FROM employees
+ WHERE department_id = (SELECT department_id
+                          FROM departments
+                         WHERE department_name = 'IT'); 
+```
 
-
-
-
-
-
-
+#### Задача 31. Jobs, Departaments. Показать сотрудников в формате: First_name, Job_title, Department_name. First_name | Job_title | Department_name|Donald | Shipping | Clerk Shipping
+```
+SELECT first_name,
+       (SELECT job_title
+          FROM jobs
+         WHERE job_id = e.job_id)
+           job_title,
+       (SELECT department_name
+          FROM departments
+         WHERE department_id = e.department_id)
+           department_name
+  FROM employees e;  
+```
 
