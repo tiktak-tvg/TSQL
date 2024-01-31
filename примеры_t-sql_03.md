@@ -38,4 +38,9 @@ SELECT *
  WHERE hire_date BETWEEN '2017/02/01' AND '2017/03/01'; 
 Go
 </pre> 
- 
+
+#### Задача 7. Вывезти текущую дату, год, месяц, день, час, минута, секунда.
+```
+DECLARE @sdt SMALLDATETIME = GETDATE();
+SELECT @sdt AS [SMALLDATETIME];
+Go
