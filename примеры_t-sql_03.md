@@ -66,7 +66,7 @@ SELECT CONVERT (date, SYSDATETIME())
  Go 
 ```
 #### Задача 10. Получить уровень зарплаты каждого сотрудника: Меньше 5000 считается Low level, Больше или равно 5000 и меньше 10000 считается Normal level, Больше иои равно 10000 считается High level
- 
+``` 
 SELECT first_name,
        salary,
        CASE
@@ -77,30 +77,41 @@ SELECT first_name,
        END
            salary_level
   FROM employees; 
- Go 
+ Go
+```
 #### Задача 7. Получить текущее системное время.
 ```
-	SELECT CONVERT (time, SYSDATETIME())
+SELECT CONVERT (time, SYSDATETIME())
     ,CONVERT (time, CURRENT_TIMESTAMP)
     ,CONVERT (time, GETDATE());
  Go 
 ```
-#### Задача 11. Получить репорт по department_id с минимальной и максимальной зарплатой, с ранней и поздней датой прихода на работу и с количествов сотрудников. Сорировать по количеству сотрудников (по убыванию)
+#### Задача 11. Получить репорт по department_id с минимальной и максимальной зарплатой, с ранней и поздней датой прихода на работу и с количествов сотрудников. Сорировать по количеству сотрудников (по убыванию).
 ``` 
-  SELECT department_id,
+SELECT department_id,
          MIN (salary) min_salary,
          MAX (salary) max_salary,
          MIN (hire_date) min_hire_date,
          MAX (hire_date) max_hire_Date,
-         COUNT (*) count
+         COUNT(*) count
     FROM employees
 GROUP BY department_id
 order by count(*) desc;   
 ```
-
-
-
-
+#### Задача 12. Сколько сотрудников которые работают в одном и тоже отделе и получают одинаковую зарплату?
+``` 
+SELECT department_id, salary, COUNT (*) As N'кол. сотрудников'
+    FROM employees
+GROUP BY department_id, salary
+  HAVING COUNT (*) > 1;  
+```
+#### Задача 13. Получить репорт сколько сотрудников приняли на работу в каждый день недели. Сортировать по количеству
+``` 
+SELECT Day(hire_Date) As N'дни', COUNT (*) As N'кол. сотрудников'
+    FROM employees
+GROUP BY Day(hire_Date)
+ORDER BY 2 DESC;  
+```
 
 
 
