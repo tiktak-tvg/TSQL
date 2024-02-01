@@ -1,3 +1,6 @@
+![image](https://github.com/tvgVita69/t-sql/assets/98489171/8948ca27-3460-49f5-b1df-a366b7aefc76)
+
+
 ![image](https://github.com/tvgVita69/t-sql/assets/98489171/95362540-6d71-4f9e-a590-165d35a853eb)
 
 ![Corporation](https://github.com/tvgVita69/t-sql/assets/98489171/f73c96d9-8c17-4b02-9fdc-ec344ec3f3a7)
