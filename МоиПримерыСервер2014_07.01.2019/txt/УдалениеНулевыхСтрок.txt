@@ -1,0 +1,5 @@
+USE имя базы
+GO
+delete from _AccumRgT7790 where  _Fld7788 = 0 --and  _Fld7789 = 0 and  _Fld7790 = 0 and  _Fld7791 = 0 
+GO
+

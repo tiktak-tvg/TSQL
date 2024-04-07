@@ -1,0 +1,12 @@
+if exists(select name from tempdb..sysobjects where name='##tmp')
+drop table ##tmp
+select * into ##tmp from _AccRg36504 where _Period >= '40130101 00:00:00'
+truncate table _AccRg36504
+insert into _AccRg36504 select * from ##tmp
+drop table ##tmp
+GO
+select * into ##tmp from _AccRgED36536 where _Period >= '40130101 00:00:00'
+truncate table _AccRgED36536
+insert into _AccRgED36536 select * from ##tmp
+drop table ##tmp
+GO
