@@ -1,0 +1,1 @@
+Select name From sys.databases;

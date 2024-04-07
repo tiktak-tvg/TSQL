@@ -1,0 +1,23 @@
+sqlcmd -S  Leon -i  E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.sql -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.txt
+
+Контекст базы данных изменен на "AdventureWorks2014".
+Name                                               GroupName                                         
+-------------------------------------------------- --------------------------------------------------
+Engineering                                        Research and Development                          
+Tool Design                                        Research and Development                          
+Sales                                              Sales and Marketing                               
+Marketing                                          Sales and Marketing                               
+Purchasing                                         Inventory Management                              
+Research and Development                           Research and Development                          
+Production                                         Manufacturing                                     
+Production Control                                 Manufacturing                                     
+Human Resources                                    Executive General and Administration              
+Finance                                            Executive General and Administration              
+Information Services                               Executive General and Administration              
+Document Control                                   Quality Assurance                                 
+Quality Assurance                                  Quality Assurance                                 
+Facilities and Maintenance                         Executive General and Administration              
+Shipping and Receiving                             Inventory Management                              
+Executive                                          Executive General and Administration              
+
+(16 rows affected)

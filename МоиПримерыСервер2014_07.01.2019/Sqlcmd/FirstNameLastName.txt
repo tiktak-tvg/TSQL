@@ -1,0 +1,21 @@
+-- sqlcmd -d AdventureWorks2014 -q "Select Top 5 FirstName From Person.Person; Select Top 5 LastName From Person.Person;" -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Sqlcmd\FirstNameLastName.txt
+sqlcmd -d Adventureworks2014 -q "Select name From sys.databases;" -o C:\databases.txt
+
+FirstName                                         
+--------------------------------------------------
+Syed                                              
+Catherine                                         
+Kim                                               
+Kim                                               
+Kim                                               
+
+(5 rows affected)
+LastName                                          
+--------------------------------------------------
+Abbas                                             
+Abel                                              
+Abercrombie                                       
+Abercrombie                                       
+Abercrombie                                       
+
+(5 rows affected)

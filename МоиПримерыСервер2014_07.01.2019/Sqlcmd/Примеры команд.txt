@@ -1,0 +1,25 @@
+Параметры -L , -Q , -Z или -i заставляют sqlcmd завершать работу после выполнения.
+
+--Пример вывода запроса в текстовый файл. Параметр -u указывает, что выходной_файл хранится в формате Юникод, независимо от формата входного_файла . 
+sqlcmd -d AdventureWorks2014 -q "Select FirstName, LastName From Person.Person Where LastName Like 'Whi%';" -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Sqlcmd\LastName.txt
+
+--Пример вывода в консоле sqlcmd
+sqlcmd -d AdventureWorks2014 -q "Select FirstName, LastName From Person.Person Where LastName Like 'Whi%';"
+
+--Пример вывода в консоле sqlcmd
+sqlcmd -d AdventureWorks2014 -q "Select Top 5 FirstName From Person.Person; Select Top 5 LastName From Person.Person;"
+
+
+
+--Пример вывода в консоле sqlcmd. Параметр -Q закрывает запрос после выполнения.
+sqlcmd -d AdventureWorks2014 -Q "Select FirstName, LastName From Person.Person Where LastName Like 'Whi%';"
+
+--Пример выполнения скрипта и вывода в текстовый файл.
+sqlcmd -S  Leon -i  E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.sql -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.txt
+
+sqlcmd -S  Leon -i  E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\bases.sql -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\bases.txt
+
+--Пример выполнения скрипта в консоле sqlcmd
+sqlcmd -S  Leon -i  E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.sql
+
+sqlcmd -S Leon E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\MyEmployees.sql
