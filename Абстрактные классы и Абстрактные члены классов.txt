@@ -1,0 +1,85 @@
+ public abstract class Animal
+
+ class Animal без модификатора доступа €вл€етс€ internal
+
+ abstract - метод заставл€ет переопределить себ€
+
+„тобы работат с абстактными методами, об€затель должен быть класс астрактный
+
+using System;
+
+namespace AbstractClasses
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Tigr tigr = new Tigr();
+            //tigr.Feed();
+            //tigr.Feed2();
+
+            //Lion lion = new Lion();
+            //lion.Feed2();
+            //массив объектов совместимых с Animal
+            Animal[] animals = { new Tigr(),new Lion(), new Lion(), new Tigr()};
+            //перечислить все элементф в массиве
+            foreach (Animal animal in animals)
+            {
+               animal.Feed2();
+            }
+        }
+    }
+}
+
+using System;
+
+namespace AbstractClasses
+{
+   public abstract class Animal
+    {
+       public string Name { get; set; }
+
+       public virtual void Feed()
+       { Console.WriteLine("¬ы покормили животное\n"); }
+
+       public abstract void Feed2();//метод заставл€ет переопределить себ€,т.е. перекладывает свои об€занности на дочерние классы
+       
+    }
+}
+
+using System;
+
+namespace AbstractClasses
+{
+    class Tigr:Animal
+    {
+        //метод предлагает переопределить себ€
+        public override void Feed()
+{
+    base.Feed();
+    Console.WriteLine("“игра покормили м€сом");
+}
+        public override void Feed2()
+        {
+            Console.WriteLine("ћы покормили тигра м€сом");
+        }
+    }
+}
+
+using System;
+
+namespace AbstractClasses
+{
+    class Lion:Animal
+    {
+        public override void Feed()
+        {
+            base.Feed();
+        }
+        public override void Feed2()
+        {
+            Console.WriteLine("ћы покормили льва м€сом");
+        }
+    }
+}
+

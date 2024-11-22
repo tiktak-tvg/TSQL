@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VarietyMethodsThroughDelegates
+{
+    class Program
+    {
+        public delegate void SimpleDelegate();
+
+        public delegate int SimpleDelegate2();
+
+        public delegate int SimpleDelegate3();
+
+        static void Main(string[] args)
+        {
+            SimpleDelegate dDelegate = SimpleMethod;
+            dDelegate += SimpleMethod2;
+            dDelegate += SimpleMethod3;
+            dDelegate();
+            SimpleDelegate2 dDelegate2 = SimpleMethodPole;
+            dDelegate2 += SimpleMethodPole2;
+            dDelegate2 += SimpleMethodPole3;
+            dDelegate2();
+
+            SimpleDelegate3 dDelegate3 = SimpleDelegate5; //Method 5
+            dDelegate3 += SimpleDelegate6;// Method 6
+            dDelegate3 += SimpleDelegate7;//Method 7
+            //при новой переменной, выводится только результат последнего метода 
+            int val = dDelegate3();
+            Console.WriteLine("Method " + val + "\n");
+        }
+
+        static void SimpleMethod()
+        {
+            Console.WriteLine("Method 1");
+        }
+
+        static void SimpleMethod2()
+        {
+            Console.WriteLine("Method 2");
+        }
+
+        static void SimpleMethod3()
+        {
+            Console.WriteLine("Method 3\n");
+        }
+
+        static int SimpleMethodPole()
+        {
+            Console.WriteLine("Method 4");
+            return 4;
+        }
+
+        static int SimpleMethodPole2()
+        {
+            Console.WriteLine("Method 5");
+            return 5;
+        }
+
+        static int SimpleMethodPole3()
+        {
+            Console.WriteLine("Method 6\n");
+            return 6;
+        }
+
+        static int SimpleDelegate5()
+        {
+            return 5;
+        }
+
+        static int SimpleDelegate6()
+        {
+            return 6;
+        }
+        static int SimpleDelegate7()
+        {
+            return 7;
+        }
+
+    }
+}

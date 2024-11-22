@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConstructorsParentChildClasses
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Tigr tigr = new Tigr("Rob",10,110,3);
+            tigr.PrintBioAnimal();
+
+            Elephant elephant = new Elephant();
+            elephant.Name = "Boby";
+            elephant.Age = 9;
+            elephant.Weight = 350;
+            elephant.PrintBioAnimal();
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConstructorsParentChildClasses
+{
+    class Animal
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Weight { get; set; }
+
+        public Animal()
+        { }
+        //специальный базовый конструктор дл€ дочерних классов
+        public Animal(string name, int age, int weight)
+        {
+            Name = name;
+            Age = age;
+            Weight = weight;
+        }
+
+        //метод-процедура выводит информацию о животном
+        public void PrintBioAnimal()
+        {
+            Console.WriteLine("ћы покормили животное по имени {0}, ему {1}лет и весит он {2}кг.\n",Name,Age,Weight);
+            Console.ReadLine();
+        }
+
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConstructorsParentChildClasses
+{
+    class Tigr:Animal
+    {
+        public int TailLength { get; set; }
+        //специальный конструктор
+        public Tigr(string name, int age, int weight, int tailLength):base(name, age, weight)
+        {
+            TailLength = tailLength;
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConstructorsParentChildClasses
+{
+    class Elephant:Animal
+    {
+    }
+}

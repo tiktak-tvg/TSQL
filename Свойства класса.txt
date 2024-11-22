@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PropertiesClass
+{
+    class Office
+    {
+        int cabinetNumber; //убираем модификатор общего доступа(public) через внешний код
+        static int cabinetDirector;
+        //определ€ем свойство cabinetNumbe дл€ объекта Office
+        public int GetCabinetNumber //записываем с больной буквы как и метод, только без круглых скобок
+        {
+            get { return cabinetNumber; } //значение дл€ чтени€
+            set {
+                if (value > 100)
+                    value = 100;
+                cabinetNumber = value; } //значение дл€ записи
+        }
+        //определ€ем свойство salary дл€ объекта Office
+        public static int CabinetDirector
+        {
+            get { return cabinetDirector; }
+            set { cabinetDirector = value; }
+        }
+
+        //убрием доступ дл€ изменени€ свойсв через переменные в самом классе
+        //конструктор с обращением к свойству, а не к переменной
+        public Office()
+        {
+            GetCabinetNumber = 190;
+            cabinetDirector = 101;
+        }
+        //вызовем метод-процедуру дл€ проверки свойства определенного в конструкторе
+        public void PrintBio()
+        {
+            Console.WriteLine("¬ офисе всего {0} кабинетов \n",GetCabinetNumber);
+        }
+        public void PrintBioDirector()
+        {
+            Console.WriteLine(" абинет директора є{0} \n",cabinetDirector);
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PropertiesClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Office cab = new Office();
+            cab.GetCabinetNumber = 190;
+            Console.WriteLine(cab.GetCabinetNumber + "\n");
+
+            Office cab2 = new Office();
+            cab2.PrintBio();
+            cab2.PrintBioDirector();
+        }
+    }
+}

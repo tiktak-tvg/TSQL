@@ -1,0 +1,81 @@
+using System;
+
+namespace DevelopmentsOverview
+{
+    class Program
+    {
+       
+
+        static void Main(string[] args)
+        {
+            Car car = new Car();
+            car.Model = "Ford Focus";
+            car.FuelLevel = 15;
+            car.TankIsEmpty += EventHadlerMethod;
+            car.DriveToHospital();
+            car.DriveToShop();
+            car.DriveToWork();
+            car.DriveToHospital();
+            car.DriveToWork();
+        }
+
+        static void EventHadlerMethod()
+        {
+            
+            Console.WriteLine("Бак пустой");
+        }
+    }
+}
+
+using System;
+
+namespace DevelopmentsOverview
+{
+   public class Car
+    {
+        public string Model { get; set; }//марка автомобиля
+        public int FuelLevel { get; set; }//сколько бензина в баке
+
+        public delegate void EventDelegate(); //делегат для события
+
+        public event EventDelegate TankIsEmpty;//собитие - бак пустой
+
+        //метод расхода топлива
+        public void DriveToShop()
+        {
+            if (FuelLevel == 0)
+            {
+                if (TankIsEmpty != null) TankIsEmpty();
+            }
+            else
+                FuelLevel -= 5;
+            Console.WriteLine("Съездили в магазин .....Осталось {0} литров бензина\n", FuelLevel);
+        }
+
+        public void DriveToWork()
+        {
+            if (FuelLevel == 0)
+            {
+                if (TankIsEmpty != null) TankIsEmpty();
+            }
+            else
+                FuelLevel -= 5;
+            Console.WriteLine("Съездили на работу .....Осталось {0} литров бензина\n", FuelLevel);
+        }
+
+        public  void DriveToHospital()
+        {
+            
+            if (FuelLevel == 0)
+            {
+                if (TankIsEmpty != null) TankIsEmpty();
+            }
+            else
+                FuelLevel -= 5;
+            Console.WriteLine("Съездили в госпиталь ..... Осталось {0} литров бензина\n", FuelLevel);
+
+        }
+
+       
+    }
+}

@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StaticFieldsMethodsClasses
+{
+    class Doctor
+    {
+        //зададим свойства нашему объекту doc1
+        public string surname;
+        public string name;
+        public string middleName;
+        public string profession;
+        public int cabinetNumber;
+        public int pacientNumber;
+        public static int salary;
+
+        //создаем статический конструктор со статическим значением
+        static Doctor()
+        {
+            salary = 900000;
+        }
+        //создаем конструктор по умолчанию
+        public Doctor()
+        {
+            surname = "Иванов";
+            name = "Иван";
+            middleName = "Иванович";
+            profession = "Окулист";
+            cabinetNumber = 5;
+            pacientNumber = 0;
+            //salary = 100000;
+        }
+
+        //создаем специальный конструктор с тремя параметрами
+        public Doctor(string surname, string name, string middleName)
+        {
+            this.surname = surname;
+            this.name = name;
+            this.middleName = middleName;
+            cabinetNumber = 12;
+            pacientNumber = 17;
+            //salary = 150000;
+        }
+        //создаем специальный конструктор с одним параметром
+        public Doctor(int pacient)
+        {
+            surname = "Петров";
+            name = "Петр";
+            middleName = "Петрович";
+            profession = "Терапевт";
+            cabinetNumber = 33;
+            pacientNumber = pacient;
+            //salary = 250000;
+        }
+        //создаем метод-процедуру вывода информация о докторе
+        public void PrintBio()
+        {
+            Console.WriteLine("Доктор {0} {1} {2} - специальность {3}, ведет прием в кабинете №{4} и уже вылечил {5} пациентов. Зарплата {6} рублей.\n",surname,name,middleName,profession,cabinetNumber,pacientNumber,salary);
+        }
+        //создаем статичесикй метод-процедуру, например информации о классе Doctor
+        public static void GetInfoClass()
+        {
+            Console.WriteLine("Класс Doctor создан для тестирования работы свойств и методов с ним \n");      
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StaticFieldsMethodsClasses
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Doctor.GetInfoClass();
+            //инициализируем класс как новый объект doc1
+            Doctor doc1 = new Doctor();//применяем конструктор по умолчанию  
+            //изменение бизнес правила и меняем статическое значение salary
+            Doctor.salary = 700000;
+            doc1.PrintBio();
+
+            //инициализируем класс как новый объект doc2            
+            Doctor doc2 = new Doctor("Сидоров", "Сидор", "Сидорович"); //применяем специальный конструктор с тремя параметрами 
+            //изменение бизнес правила и меняем статическое значение salary
+            Doctor.salary = 600000;
+            doc2.PrintBio();
+
+            //инициализируем класс как новый объект doc3
+            Doctor doc3 = new Doctor(44); //применяем специальный конструктор с одним параметром 
+            doc3.PrintBio();
+
+            Service.SendEmail(110,25);
+            
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StaticFieldsMethodsClasses
+{
+    static class Service
+    {
+        public static string mail;
+        public static string pop;
+        public static string smtp;
+
+        //создаем статический метод
+        public static void SendEmail(int popPort, int smtpPort)
+        {
+            mail = "tfanfan@rambler.ru";
+            pop = "pop.rambler.ru";
+            smtp = "smtp.rambler.ru";
+        }
+    }
+}

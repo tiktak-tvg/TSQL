@@ -1,0 +1,104 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DelegatesDifficult
+{
+    public delegate void MyDelegate();
+
+    public delegate void MyDelegate2(string name);
+
+    public delegate void MyDelegate3(int number);
+
+    public delegate void MyDelegate4(char simbol);
+
+    public delegate void MyDelegate5(double zero);
+
+    public delegate void MyDelegate6(float a);
+
+    public delegate void MyDelegate7(decimal b);
+
+    public delegate void MyDelegate8(short x);
+
+    public delegate void MyDelegate9(uint d);
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SimpleMethod();
+            MyDelegate myDelegate = new MyDelegate(SimpleMethod);
+            myDelegate();
+            MyDelegate2 myDelegate2 = new MyDelegate2(SimpleMethod2);
+            myDelegate2("Виталий");
+            MyDelegate3 myDelegate3 = SimpleMethod3;
+            myDelegate3(5);
+            MyDelegate4 myDelegate4 = SimpleMethod4;
+            myDelegate4('?');
+            MyDelegate5 myDelegate5 = new MyDelegate5(SimpleMethod5);
+            myDelegate5(1E06);
+            myDelegate5(3.14);
+            MyDelegate6 myDelegate6 = new MyDelegate6(SimpleMethod6);
+            myDelegate6(1.21F);
+            MyDelegate7 myDelegate7 = SimpleMethod7;
+            myDelegate7(4.5M);
+            MyDelegate8 myDelegate8 = SimpleMethod8;
+            myDelegate8(0x7F);
+            myDelegate8(0xF00);
+            MyDelegate9 myDelegate9 = new MyDelegate9(SimpleMethod9);
+            myDelegate9(0xA0000000);
+
+
+
+        }
+
+        static void SimpleMethod()
+        {
+            Console.WriteLine("Простой метод без параметров ..... \n");
+        }
+
+        static void SimpleMethod2(string name)
+        {
+            Console.WriteLine("Передача сторокый параметров - например имя {0}",name);
+        }
+
+        static void SimpleMethod3(int number)
+        {
+            Console.WriteLine("Передача целых чисел, например число {0}\n",number);
+        }
+
+        static void SimpleMethod4(char simbol)
+        {
+            Console.WriteLine("Простой пример передачи символа, например символ {0}",simbol);
+        }
+
+        static void SimpleMethod5(double zero)
+        {
+            Console.WriteLine("Простой метод числа с плавающей точкой, например {0}", zero);
+        }
+
+        static void SimpleMethod6(float a)
+        {
+            Console.WriteLine("Простой метод числа с плавающей точкой, например {0}", a);
+        }
+
+        static void SimpleMethod7(decimal b)
+        {
+            Console.WriteLine("Простой метод числа для финансовых расчетов, например {0}", b);
+        }
+
+        static void SimpleMethod8(short x)
+        {
+            Console.WriteLine("Простой метод числа, например {0}", x);
+
+        }
+
+        static void SimpleMethod9(uint d)
+        {
+            Console.WriteLine("Простой метод числа, например {0}", d);
+        }
+    }
+}

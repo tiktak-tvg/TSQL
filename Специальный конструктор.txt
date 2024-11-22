@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SpecialClassConstructors
+{
+    class Doctor
+    {
+        //создаем свойства для объекта doc1
+        public string surname;
+        public string name;
+        public string middleName;
+        public string profession;
+        public int cabinetNumber;
+        public int pacientNumber;
+
+        //создаем конструктор по умолчанию
+        public Doctor()
+        {
+            surname = "Иванов";
+            name = "Иван";
+            middleName = "Иванович";
+            profession = "Окулист";
+            cabinetNumber = 5;
+        }
+        //создаем специальный конструктор c тремя параметрами
+        public Doctor(string surname,string name,string mdName) //задаем параметры для свойств объекта
+        {
+            //используем ключевое слово this т.к. у нас совпадают имена свойств объекта с именами параметров
+            this.surname = surname;
+            this.name = name;
+            //так было бы без ключевого слова this
+            middleName = mdName;
+        }
+        //создаем специальный конструктор c одним параметром
+        public Doctor(int pacient)
+        {
+            surname = "Иванов";
+            name = "Иван";
+            middleName = "Иванович";
+            profession = "Окулист";
+            cabinetNumber = 5;
+
+            pacientNumber = pacient;
+        }
+        //
+        //создаем метод-процедуру описания объекта доктор (doc1)
+        public void PrintBio()
+        {
+            Console.WriteLine("Доктор {0} {1} {2} - специальность {3}, ведет прием в кабинете №{4} и уже вылечил {5} пациентов \n",surname,name,middleName,profession,cabinetNumber,pacientNumber);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SpecialClassConstructors
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //инициализируем этот класс как новый объект doc1, обязательно!!!!!
+            Doctor doc1 = new Doctor();
+            //вызываем конструктор по умолчанию
+            doc1.PrintBio();
+
+            //инициализируем этот класс как новый объект doc2
+            Doctor doc2 = new Doctor("Петров","Петр","Петрович");
+            doc2.PrintBio();
+
+            //инициализируем этот класс как новый объект doc3
+            Doctor doc3 = new Doctor(5000);
+            doc3.PrintBio();
+
+        }
+    }
+}
+
+P.S. Ключевое слово this можно использовать как подсказку просмотра всех конструкторов в классе, если в одном из методов написать this. подсказка подскажет какие кострукторы есть в классе

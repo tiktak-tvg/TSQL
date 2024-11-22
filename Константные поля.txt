@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConstantField
+{
+    class Services
+    {
+        public const string TechSupportEmail = "it@onclinic.ru";
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConstantField
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Обращайтесь в службу поддержки по адресу: {0} \n",Services.TechSupportEmail);
+        }
+    }
+}

@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KeywordsVirtualOverride
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            Elephant elephant = new Elephant("Слон по имени Boby",10,255);
+            elephant.PrintBio();
+            elephant.Feed();
+
+            Tigr tigr = new Tigr("Тигр по имени Rob",11,112);
+            tigr.PrintBio();
+            tigr.Feed();
+            
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KeywordsVirtualOverride
+{
+    public class Animal
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Weight { get; set; }
+
+        public Animal(string name,int age,int weight)
+        {
+            Name = name;
+            Age = age;
+            Weight = weight;
+        }
+        //метод информация о животном
+        public virtual void PrintBio()
+        {
+            Console.WriteLine(" {0} имеет вес {1}кг. ему {2} лет.",Name,Weight,Age);
+        }
+        public virtual void Feed()
+        {
+            Console.WriteLine("Вы покормили животное");
+        }
+
+    }
+
+   
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KeywordsVirtualOverride
+{
+    class Elephant:Animal
+    {
+        public int TailLength { get; set; }
+
+        ////создаем конструктор от базового класса Animal
+        public Elephant(string name,int age,int weight):base(name,age,weight)
+        {
+            TailLength = 1;
+        }
+        public override void PrintBio()
+        {
+            base.PrintBio();
+            Console.WriteLine("Длина хвоста {0}м.",TailLength);
+        }
+        public override void Feed()
+        {
+            base.Feed();
+            Console.WriteLine(" Слона покормили бананом\n");
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KeywordsVirtualOverride
+{
+    class Tigr:Animal
+    {
+        public int TailLength { get; set; }
+     
+        //создаем конструктор от базового класса Animal
+        public Tigr(string name,int age,int weight):base(name,age,weight)
+        {
+            TailLength = 5;
+        }
+        public override void PrintBio()
+        {
+            base.PrintBio();
+            Console.WriteLine("Длина хвоста {0}",TailLength);
+        }
+        public override void Feed()
+        {
+            base.Feed();
+            Console.WriteLine(" Тигра покормили мясом\n");
+        }
+    }
+    
+}

@@ -1,0 +1,51 @@
+Классы -> Объекты
+Например: Врач
+Теперь опишем что этот объект может иметь.
+
+Классы -> Объекты
+Например: Врач
+Теперь опишем что этот объект может иметь.
+
+Объект -> Свойства -> Параметры 
+Объект -> Методы -> Свойства,Параметры
+Объект -> События
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Classes
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // создаем объект класса, обязательно нужно инициализировать как новый объект!!!!!
+            Doctor doc1 = new Doctor();
+
+            //применим свойства к объекту doc1
+            doc1.surname = "Иванов";
+            doc1.name = "Иван";
+            doc1.middleName = "Иванович";
+            doc1.profession = "Окулист";
+            doc1.cabinetNumber = 15;
+            doc1.pacientNumber = 0;
+            //выводим информацию о докторе
+            doc1.PrintBio();
+            doc1.GoToWork();
+            doc1.PrintBio();
+
+
+            Doctor doc2 = new Doctor();
+            doc2.surname = "Петров";
+            doc2.name = "Петр";
+            doc2.middleName = "Петрович";
+            doc2.profession = "Терапевт";
+            doc2.cabinetNumber = 13;
+            doc2.pacientNumber = 0;
+
+        }
+    }
+}

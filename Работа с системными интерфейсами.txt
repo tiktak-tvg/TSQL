@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SystemInterfaces
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Worker work1 = new Worker();
+            work1.FIO = "Иванов И.И.";
+            work1.Salary = 300000;
+
+            //клонируем поля с параметрами из объекта work1 в work2
+            Worker work2 = (Worker) work1.Clone();
+            Console.WriteLine(work1.FIO );
+            Console.WriteLine(work2.FIO + "\n");
+            //изменяем параметры в объекте work1
+            work1.FIO = "Петров П.П.";
+            //так как клонирование было раньше, то информация будет другая
+            Console.WriteLine(work1.FIO );
+            Console.WriteLine(work2.FIO + "\n");
+            //можно поменять наследование клонирования
+            work2.Salary = 500000;
+            Console.WriteLine(work1.Salary);
+            Console.WriteLine(work2.Salary + "\n");
+
+
+        }
+    }
+
+    class Worker:ICloneable
+    {
+        public string FIO { get; set; }
+        public int Salary { get; set; }
+        //
+        public object Clone()
+        {
+            Worker clone = new Worker();
+            clone.FIO = this.FIO;
+            clone.Salary = this.Salary;
+            return clone;
+        }
+    }
+
+
+  
+}

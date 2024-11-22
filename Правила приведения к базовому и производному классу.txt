@@ -1,0 +1,63 @@
+using System;
+
+namespace BasicAndDerivedClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //неявное приведение
+            Tigr tigr1 = new Tigr();
+            tigr1.Name = "Rob";
+            PrintBioAnimal(tigr1);
+            //явное приведение
+            Animal tigr2 = new Tigr();
+            tigr2.Name = "Rok";
+            PrintBioAnimal2((Tigr)tigr2);
+        }
+        //полиморфное поведение
+        static void PrintBioAnimal(Animal animal)
+        {
+            //if (animal is Tigr)
+            //    Console.WriteLine("Передан объект класса Tigr");            
+            //if (animal is Elephant)            
+            //    Console.WriteLine("Передан объект класса Elephant");
+            if (animal as Tigr != null)
+            {
+                Console.WriteLine("Передан объект класса Tigr"); 
+            }
+            if (animal as Elephant != null)
+            {
+                Console.WriteLine("Передан объект класса Elephant");
+            }
+            Console.WriteLine(animal.Name); 
+        }
+        static void PrintBioAnimal2(Tigr tigr)
+        { Console.WriteLine(tigr.Name); }
+    }
+}
+
+
+using System;
+
+namespace BasicAndDerivedClass
+{
+   public abstract class Animal
+    {
+       public string name;
+       public string Name 
+       { 
+           get { return name; } 
+           set { name = value; } 
+       }
+    }
+}
+using System;
+
+namespace BasicAndDerivedClass
+{
+    class Tigr:Animal
+    {
+        public int TailLength { get; set; }
+    }
+}

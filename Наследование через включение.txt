@@ -1,0 +1,42 @@
+using System;
+
+namespace InheritanceInclusion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Office office = new Office();
+            office.CabinetNumber = 5;
+            office.Comp.NumberSerial = 1334234;
+            office.Comp.TurnOn();
+        }
+    }
+}
+
+using System;
+
+namespace InheritanceInclusion
+{
+    class Office
+    {
+        public int CabinetNumber { get; set; }
+
+        //включаем класс компьютер в класс офис
+        public class Computer
+        {
+            public int NumberSerial { get; set; }
+            //метод имитирующий включение компьютера
+            public void TurnOn()
+            { 
+                //........
+            }
+        }
+        public Computer Comp { get; set; }
+        //чтобы он был виден во внешнем коде, его нужно инициализировать как объект в конструкторе Office
+        public Office()
+        {
+            Comp = new Computer();
+        }
+    }
+}

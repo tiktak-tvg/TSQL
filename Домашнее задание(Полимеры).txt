@@ -1,0 +1,69 @@
+public abstract class Figure
+{ 
+   public string Name{get;set;}
+   public abstract void Draw();
+}
+
+//создаем два дочерних неопределенных класса
+//делаем их абстрактными, чтобы не обязательно было прописывать метод рисовать Draw
+public abstact class FigureWithoutCorners:Figure
+{}
+public abstract class Poligon:Figure
+{}
+
+//создаем дочерние классы наследумого класса фигура без границ - FigureWithoutCorners
+//не делаем их абстрактными, чтобы обязательно было прописывать метод рисовать Draw
+public class Circle:FigureWithoutCorners
+{
+   //метод от наследуемого класса Figure
+   public override void Draw()
+         { Console.WriteLine("Рисуем круг ......\n");}
+}
+
+public class Oval:FigureWithoutCorners
+{
+   //метод от наследуемого класса Figure
+   public override void Draw()
+         { Console.WriteLine("Рисуем овал .....\n");}
+
+}
+//создаем дочерние классы наследумого класса многоугольник - Poliglot
+public class Triangle:Poligon
+{
+   //метод от наследуемого класса Figure
+   public override void Draw()
+         { Console.WriteLine("Рисуем треугольник .....\n");}
+}
+public class Chetyreugolnik:Poligon
+{
+   //метод от наследуемого класса Figure
+   public override void Draw()
+         { Console.WriteLine("Рисуем четырехугольник .....\n");}
+}
+public class Pentagon:Poligon
+{
+   //метод от наследуемого класса Figure
+   public override void Draw()
+         { Console.WriteLine("Рисуем пятиугольник .....\n");}
+}
+
+//в Main прописываем еще один метод, который выведет информацию
+
+static void Main(string[] args)
+{
+ //вызываем метод Print из массива классов
+ //для начала создадим массив классов
+   Figure[] firuras = {new Circle(), new Oval, new Triangle(), new Chetyreugolnik(), new Pentagon()} 
+   Print(figuras); 
+}
+
+static void Print(Figure[] figuras)
+{
+   foreach (Figure figura in figuras)
+   { 
+      figura.Draw();
+   }
+}
+
+
+

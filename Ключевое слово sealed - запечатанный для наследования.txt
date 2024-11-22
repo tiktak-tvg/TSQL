@@ -1,0 +1,25 @@
+using System;using System;
+
+
+namespace KeywordSealed
+{
+    class Class1 : Class2 //наследование не возможно
+    {
+    }
+}
+
+
+namespace KeywordSealed
+{
+    sealed class Class2 //sealed - считается запечатанным классом для наследования
+    {
+    }
+    class Class3 : Class2 //ошибка, наследование не возможно
+    { 
+    
+    }
+    sealed class Class4 : Class1 //дальнейшее наследование не возможно
+    {
+
+    }
+}

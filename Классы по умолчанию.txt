@@ -1,0 +1,68 @@
+Классы -> Объекты
+Например: Врач
+Теперь опишем что этот объект может иметь.
+
+Объект -> Свойства -> Параметры 
+Объект -> Методы -> Свойства,Параметры
+Объект -> События
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DefaultConstructorClass
+{
+    class Doctor
+    {
+        //создаем свойства для объекта doc1
+        public string surname;
+        public string name;
+        public string middleName;
+        public string profession;
+        public int cabinetNumber;
+        public int pacientNumber;
+
+        //конструктор по умолчанию, определяется сразу после всех свойств класса
+        public Doctor()
+        {
+            surname = "Иванов";
+            name = "Иван";
+            middleName = "Иванович";
+            profession = "Окулист";
+            cabinetNumber = 11;
+            pacientNumber = 1000;
+        }
+
+        //создаем метод-процедуру объекта
+        public void PrintBio()
+        {
+            Console.WriteLine("Доктор {0} {1} {2} - специальность {3}, ведет прием в кабинете №{4} и вылечил {5} пациентов",surname,name,middleName,profession,cabinetNumber,pacientNumber);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DefaultConstructorClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //создаем объект класса, обязательно нужно инициализировать как новый объект!!!!!
+            Doctor doc1 = new Doctor();
+            //вызываем метод-процедуру объекта и ошибки не будет,т.к. отработает конструктор по умолчанию
+            doc1.PrintBio();
+            //изменяем значение которое установлено в кострукторе по умолчанию, например
+            doc1.profession = "Терапевт";
+            doc1.PrintBio();
+        }
+    }
+}
+

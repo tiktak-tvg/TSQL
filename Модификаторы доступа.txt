@@ -1,0 +1,63 @@
+//P.s. если не устанавливать модификатор доступа, например int Property, он будет по умолчанию private
+using System;
+
+namespace AccessModifiers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ClassA classA = new ClassA();
+            classA.Property1 = 5;
+            classA.Property21 = 15;
+            classA.Property4 = 11;
+            
+            ClassB classB = new ClassB();
+            classB.x();
+            classB.Property4 = 11;
+        }
+    }
+}
+
+using System;
+
+namespace AccessModifiers
+{
+   public class ClassA //доступ из других приложений, даже за пределами сборки
+    {
+        public int Property1 { get; set; }  //доступ из внешнего и внутреннего кода
+        private int Property2 { get; set; } //доступлен только в классе
+       //.............
+        private int property21 { get; set;} //если настроить свойства, то тогда будет доступен во внешнем коде
+        public int Property21
+        {
+            get { return property21; }
+            set { property21 = value; }
+        }
+       //.............
+        protected int Property3 { get; set; }//доступен в классе и дочернем классе, но не доступен во внешнем коде
+        public void b()
+        {
+            Console.WriteLine(Property3);
+        }
+       //.............
+        internal int Property4 { get; set; } //только доступен в текущей сборке
+    }
+}
+using System;
+
+
+namespace AccessModifiers
+{
+    class ClassB:ClassA
+    {
+        public void x() 
+        {
+            //доступен из наследуемого класса
+            Console.WriteLine(Property3);
+        }
+        
+    }
+}
+
+

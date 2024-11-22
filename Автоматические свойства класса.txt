@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AutomaticPropertiesClass
+{
+    class Office
+    {
+        //автоматические свойства используются для сокращения кода
+        public int CabinetNumber { get; set; }
+
+        //метод вывода информации
+        public void PrintBio()
+        {
+            Console.WriteLine("Кабинет номер {0}",CabinetNumber);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AutomaticPropertiesClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Office cab1 = new Office();
+            cab1.CabinetNumber = 100;
+            cab1.PrintBio();
+        }
+    }
+}

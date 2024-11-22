@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            AddTwoNumbers(5,5);
+            TypeMessage("Hello");
+            int metodResult = AddTowNumbers2(5,5);
+            WriteMetod(metodResult);
+            int[] newArray = new[] { 12,45,23,45,55};
+            //Console.WriteLine(GetValueMax(newArray));
+            int d = GetValueMax(newArray);
+            Console.WriteLine();
+            WriteMetod(d);
+            Console.WriteLine();
+            int n = GetCharacters("Привет Visual Studio");
+            WriteMetod(n);
+            Console.WriteLine(AnalisNumber(0));
+        }
+        //метод-процедура сложения двух чисел
+        static void AddTwoNumbers(int x,int y)
+        {
+            
+            int result = x * y;
+            Console.WriteLine("{0} * {1} = {2}\n",x,y,result);
+        }
+        //метод-процедура выводящий на консоль сообщение
+        static void TypeMessage(string message)
+        {
+            message = message + "!!!\n";
+            Console.WriteLine(message);
+        }
+        //метод-функция сложения двух чисел с возращаемым значением
+        static int AddTowNumbers2(int x, int y)
+        {
+            int result = x * y;
+            //Console.WriteLine(result + "\n");
+            return result;
+        }
+        //метод-процедура для проверки возвращаемого значения
+        static void WriteMetod(int b)
+        {
+            Console.WriteLine(b + "\n");
+        }
+        //метод-функция определяет максимальное значение в массиве
+        static int GetValueMax(int[] newArray)
+        {
+            Array.Sort(newArray);
+            return newArray[newArray.Length - 1];         
+        }
+        //метод-функция определяет количество символов в строке текста
+        static int GetCharacters(string myText)
+        {
+            return myText.Length - 2;
+        }
+        //метод-функция анализирует число
+        static string AnalisNumber(int x)
+        {
+            if (x > 0)
+                return "x > 0";
+            if (x < 0)
+                return "x < 0";
+            return "x = 0";
+        }
+    }
+}

@@ -1,0 +1,75 @@
+using System;
+
+namespace DelegatesDifficult
+{
+   public static class Services
+    {
+       //метод-функция калькулятор расхода топлива
+       public static double CalculatorConsumptionFuel(double fuelLevel, double fuelConsumption1Km, double distance)
+       {
+           fuelLevel -= distance * fuelConsumption1Km;
+           if (fuelLevel <= 0)
+               Console.WriteLine("Машина заглохла на дистанции {0}km - нехватило бензина ", distance);
+           else
+               Console.WriteLine("Пройдено {0}km - остаток топлива {1} л. ", distance, fuelLevel);
+           return fuelLevel;
+       }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DelegatesDifficult
+{    
+    class Program
+    {        
+        static void Main(string[] args)
+        {
+            Car car = new Car("Ford Focus",5,4.6);
+            car.Drive(10);
+            car.Drive(5);
+            car.Drive(90);
+            car.Drive(100);           
+        }        
+    }
+}
+
+
+using System;
+
+namespace DelegatesDifficult
+{
+    class Car
+    {
+        public string Name { get; set; } //марка машины
+        public double FuelLevel { get; set; }//сколько литров топлива
+        public double FuelConsumption100Km { get; set; }//расход топлива на 100км
+        private double fuelConsumption1Km;//расход топлива на 1км
+
+        //создаем конструктор
+        public Car(string name,double fuelLevel,double fuelConsumption100km)
+        {
+            Name = name;
+            FuelLevel = fuelLevel;
+            FuelConsumption100Km = fuelConsumption100km;
+            fuelConsumption1Km = FuelConsumption100Km/100*1;
+        }
+
+        //метод-процедура расчета топлива при движении на дистанцию
+        public void Drive(double distance)
+        {
+            FuelLevel -= distance*fuelConsumption1Km;
+            if (FuelLevel <= 0)
+                Console.WriteLine("Машина заглохла на дистанции {0}km - нехватило бензина ", distance);          
+            else 
+                Console.WriteLine("Пройдено {0}km - остаток топлива {1} л. ",distance,FuelLevel);
+        }
+
+    }
+
+}

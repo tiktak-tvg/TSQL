@@ -1,0 +1,122 @@
+P.s.Не наследуемый класс помечен звездочкой
+
+using System;
+
+
+namespace ClassicalInheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            InfoClass.Information();
+
+            Tigr tigr = new Tigr();
+            tigr.Name = "Rob";
+            tigr.Age = 12;
+            tigr.Weight = 120;
+            tigr.PrintBioAnimal();           
+
+            Elephant elephant = new Elephant();
+            elephant.Name = "Boby";
+            elephant.Age = 9;
+            elephant.Weight = 450;
+            elephant.PrintBioAnimal2();
+
+            Lion lion = new Lion();
+            lion.Name = "Pepe";
+            lion.Age = 13;
+            lion.Weight = 100;
+            lion.PrintBioAnimal3();
+            
+        }
+    }
+}
+
+
+using System;
+
+
+namespace ClassicalInheritance
+{
+    class Animal
+    {
+        //определяем свойства для дочерних классов
+        public string Name {get; set;}
+        public int Age { get; set; }
+        public int Weight { get; set; }
+
+        //метод выводящий информацию о животном
+        public void PrintBioAnimal()
+        {
+            Console.WriteLine("Наш тигр весит {0}кг. Ему {1}лет и зовут его {2}\n",Weigth,Age,Name);
+            Console.ReadLine();
+            
+        }
+        //метод выводящий информацию о животном
+        public void PrintBioAnimal2()
+        {
+            Console.WriteLine("Наш слон весит {0}кг. Ему {1}лет и зовут его {2}\n", Weigth, Age, Name);
+            Console.ReadLine();
+            Console.Clear();
+        }
+    }
+}
+
+using System;
+
+namespace ClassicalInheritance
+{
+    //не наследуемы класс
+    class Lion
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Weight { get; set; }
+
+        //метод выводящий информацию о животном
+        public void PrintBioAnimal3()
+        {
+            Console.WriteLine("Наш лев весит {0}кг. Ему {1}лет и зовут его {2}\n", Weigth, Age, Name);
+            Console.ReadLine();
+
+        }
+    }
+}
+
+using System;
+
+
+namespace ClassicalInheritance
+{
+    //наследуемый класс от Animal
+    class Tigr:Animal
+    {
+        
+    }
+}
+
+using System;
+
+
+namespace ClassicalInheritance
+{
+    //наследуемый класс от Animal
+    class Elephant:Animal
+    {
+    }
+}
+
+using System;
+
+namespace ClassicalInheritance
+{
+    class InfoClass
+    {
+        public static void Information() 
+        {
+            Console.WriteLine("Информация о животном\n");
+        }
+    }
+}

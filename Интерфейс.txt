@@ -1,0 +1,86 @@
+Interface - определяет какое нибудь поведение
+
+using System;
+
+namespace Interface
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr1 = {1, 2, 3, 4, 5};
+            arr1[0] = 1;
+            arr1[1] = 2;
+            arr1[2] = 3;
+            arr1[3] = 4;
+            arr1[4] = 5;
+
+            int[] arr2 = (int[]) arr1.Clone();\\явное указание (int[])
+            Console.WriteLine("{0} {1} {2} {3} {4}\n", arr1[0], arr1[1], arr1[2], arr1[3], arr1[4]);
+            foreach (var arr in arr2)
+            {
+                Console.WriteLine(arr);
+
+            }
+        }
+    }
+}
+
+
+//Создание и реализация интерфейса
+//обозначается с главной буквы I
+//определяются только свойства, методы и события
+//Определять поля и конструкторы нельзя 
+//Интерфейс работает только внутри класса 
+//внутри интерфейса модификатор доступа не устанавливается, по умолчанию он считается публичным и абстрактным
+
+интерфейс определяет поведение "Определить количество вершин геометрической фигуры"
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CreationImplementationInterface;
+
+namespace CreationImplementationInterface
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            Figure[] figures = {new Circle(), new Oval(), new Triangle(), new Chetyreugolnic(), new Pentagon()};
+            //Print(figures);
+
+            IPoints[] shapes = {new Triangle(), new Chetyreugolnic(), new Pentagon()};
+            GetNumberCorners(shapes);
+        }
+
+        static void Print(Figure[] figures)
+        {
+            foreach (Figure figure in figures)
+            {
+                figure.Draw();
+                if (figure is IPoints)
+                {
+                    Console.WriteLine("Ы этотм объкте {0} вершины\n",((IPoints) figure).CalculatePoint());
+                }
+            }
+        }
+
+        static void GetNumberCorners(IPoints[] shapes)
+        {
+            int max = 0;
+            foreach (IPoints shape in shapes)
+            {
+                
+                if (shape.CalculatePoint() > max)
+                {
+                    max = shape.CalculatePoint();
+                }
+            }
+            Console.WriteLine("Самое большое количество уголов {0} \n",max);
+        }
+    }
+}
