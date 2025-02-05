@@ -1,6 +1,5 @@
 sqlcmd -S  Leon -i  E:\Lessons2\TSQL\2014_07.01.2019\Select\Department.sql -o E:\Lessons2\TSQL\2014_07.01.2019\Select\Department.txt
 
-Êîíòåêñò áàçû äàííûõ èçìåíåí íà "AdventureWorks2014".
 Name                                               GroupName                                         
 -------------------------------------------------- --------------------------------------------------
 Engineering                                        Research and Development                          
