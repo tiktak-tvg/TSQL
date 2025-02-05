@@ -8,13 +8,13 @@ namespace AutomaticPropertiesClass
 {
     class Office
     {
-        //автоматические свойства используются для сокращения кода
+        //Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРµ СЃРІРѕР№СЃС‚РІР° РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РґР»СЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ РєРѕРґР°
         public int CabinetNumber { get; set; }
 
-        //метод вывода информации
+        //РјРµС‚РѕРґ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё
         public void PrintBio()
         {
-            Console.WriteLine("Кабинет номер {0}",CabinetNumber);
+            Console.WriteLine("РљР°Р±РёРЅРµС‚ РЅРѕРјРµСЂ {0}",CabinetNumber);
         }
     }
 }
