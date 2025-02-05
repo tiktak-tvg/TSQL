@@ -1,0 +1,4 @@
+SELECT        Cmp_Name AS Наименование, Prt_Date AS Дата, Prt_CurrQnt AS Количество, Str_Price03 AS Цена, Obj_Name AS Поставщик
+FROM            ws_InvFindCmp
+WHERE        (Prt_CurrQnt > 0)
+ORDER BY Наименование

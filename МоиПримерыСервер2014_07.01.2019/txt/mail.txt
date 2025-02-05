@@ -1,0 +1,27 @@
+CREATE PROC notify_users (
+  @notification NVARCHAR(100) = 'Админ предупреждает! SQL Server скоро будет отключен! Трепещите, смертные! :-)'
+) AS
+BEGIN
+
+  SET NOCOUNT ON
+   
+  DECLARE @msg VARCHAR(250)
+  DECLARE @hostname sysname
+
+  SELECT @hostname= min(RTRIM(hostname))
+  FROM
+    master.dbo.sysprocesses (NOLOCK)
+  WHERE
+  
+  hostname <> ''
+ 
+  WHILE @hostname is not null BEGIN
+	  set @msg='exec master.dbo.xp_cmdshell "net send ' + RTRIM(@hostname) + ' ' + RTRIM(@notification) + ' "'
+    EXEC (@msg)
+  	SELECT @hostname= min(RTRIM(hostname)) FROM master.dbo.sysprocesses (NOLOCK)
+	  WHERE hostname <> '' and hostname > @hostname
+  END
+ 
+  SET NOCOUNT OFF
+ 
+END
