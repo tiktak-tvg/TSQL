@@ -1,4 +1,4 @@
-sqlcmd -d AdventureWorks2014 -q "Select FirstName, LastName From Person.Person Where LastName Like 'Whi%';" -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Sqlcmd\LastName.txt
+sqlcmd -d AdventureWorks2014 -q "Select FirstName, LastName From Person.Person Where LastName Like 'Whi%';" -o E:\Lessons2\TSQL\2014_07.01.2019\Sqlcmd\LastName.txt
 
 FirstName                                          LastName                                          
 -------------------------------------------------- --------------------------------------------------
