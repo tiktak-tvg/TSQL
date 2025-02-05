@@ -1,16 +1,13 @@
 DECLARE @SQL VARCHAR(500)
 DECLARE c CURSOR FOR
---Получаем список таблиц документов и регистров document-документы и табличные части, accnt-регистры бухгалтерии, 
--- accttl- итоги по регистрам бухгалтерии, accum- регистры накопления с итогами
+
 SELECT [name] FROM sysobjects WHERE (name LIKE '%document%' OR name LIKE '%accnt%' OR name LIKE '%accttl%' OR name LIKE '%accum%') AND xtype = 'U'
 OPEN c
---цикл по отобранным таблицам
+
 FETCH NEXT FROM c INTO @SQL
 WHILE @@FETCH_STATUS = 0
 BEGIN
---Формируем текст для очищения таблицы
-SET @SQL = 'delete from ' + @SQL
---Выполняем очищение таблицы
+-- @SQL = 'delete from ' + @SQL
 --EXEC (@sql)
 PRINT @SQL
 FETCH NEXT FROM c INTO @SQL
