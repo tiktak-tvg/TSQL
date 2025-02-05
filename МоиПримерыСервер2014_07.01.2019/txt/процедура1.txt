@@ -1,0 +1,72 @@
+USE tempdb
+GO
+CREATE PROCEDURE dbo.ShowMonth @DateTimeValue datetime
+    , @Month varchar(10) OUTPUT
+AS
+BEGIN
+ 
+    SET @Month = DATENAME(m, @DateTimeValue)
+END
+GO
+ 
+
+string year, month, date, datetime;
+            
+// making the datetime value from different string values
+year = "2013";
+month = "05";
+date = "01";
+datetime = month + "/" + date + "/" + year + " 00:00:00";
+DateTime convertedDate = Convert.ToDateTime(datetime);
+ 
+// set connection and command
+SqlConnection connection = new SqlConnection(@"Server=SL-DEV001\SQL2012;Database=tempdb;uid=Dinesh;pwd=Dinesh");
+SqlCommand command = new SqlCommand("dbo.ShowMonth", connection);
+command.CommandType = CommandType.StoredProcedure;
+ 
+SqlParameter parameterDateTime = new SqlParameter("DateTimeValue", SqlDbType.DateTime);
+parameterDateTime.Value = convertedDate;
+parameterDateTime.Direction = ParameterDirection.Input;
+command.Parameters.Add(parameterDateTime);
+ 
+SqlParameter parameterMonth = new SqlParameter("Month", SqlDbType.VarChar, 10);
+parameterMonth.Direction = ParameterDirection.Output;
+command.Parameters.Add(parameterMonth);
+ 
+connection.Open();
+command.ExecuteNonQuery();
+connection.Close();
+ 
+Console.WriteLine(parameterMonth.Value.ToString());
+When you execute the code, it returns the “month” as follows;
+
+Output1
+
+Now let’s change the “Culture” of the current thread. Add the below code as the first statement of C#.NET code.
+
+Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
+And when the code is run, result is;
+
+Output2
+
+As you see, “month” returns from the stored procedure is now wrong. It means, Date has been misinterpreted by either application or SQL Server.
+
+Now let’s change the way we pass the date and time as per ISO 8601;
+
+//datetime = month + "/" + date + "/" + year + " 00:00:00";
+datetime = year + "-" + month + "-" + date +  "T00:00:00";
+If you execute the code now, SQL Server identifies the elements of passed value properly regardless of Culture setting and returns the value correctly. Therefore 4th option is the best way to pass datetime values to SQL Server.
+
+ISO 8601 
+This is an international standard for exchanging dates and times. This standard provides an unambiguous and well-defined method of representing dates and times and avoids misinterpretation of dates and times.
+
+Format of this standard separates date and time using “T” (uppercase). Year needs to be set with 4 digits, month needs to be set with 2 digits and, day needs to be set with 2 digits. Time sets in 24 hours format. Hour, minute and second are separated using “:” and fraction of second is separated using “.”.
+
+For an example, “8-Jan-2013 2:45:44” as per ISO 8601 is “2013-01-08T14:45:44.000”.
+
+When this is used with SQL Server, setting related to SET DATEFORMAT and SET LANGUAGE is ignored.
+
+If you need to convert stored datetime values to ISO 8601 for exchanging them with another party, here is the way;
+
+SELECT CONVERT(char(23), DateValue, 126)
+You can use 127 instead of 126 if time zone information is required.

@@ -1,0 +1,13 @@
+DateTime date1=DateTime.Today.AddMonths(-1);
+DateTime date2=DateTime.Today.AddMonths(1);
+
+using (SqlConnection con = connect("igroup20_test2ConnectionString"))
+{
+
+    using (SqlCommand cmd = create_command(con, 
+       "select * from act_events where " +
+        "  (@date1>=e_start  and @date1 <= e_end) " + 
+        "  or (@date2>= e_start and @date2 <= e_end) "))
+        {
+            cmd.Parameters.AddWithValue("@date1", date1);
+            cmd.Parameters.AddWithValue("@date2", date2);

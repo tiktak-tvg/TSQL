@@ -1,0 +1,40 @@
+Вызов процедуры без параметров которая ничего не возвращает:
+using (var sqlConn = new SqlConnection("строка соединения"))
+{ 
+	var sqlCmd = new SqlCommand("Имя Stored Procedure", sqlConn);
+	sqlCmd.CommandType = CommandType.StoredProcedure;
+	
+	sqlConn.Open();
+	sqlCmd.ExecuteNonQuery();
+}
+
+Вызов процедуры с параметрами которая ничего не возвращает:
+using (var sqlConn = new SqlConnection("строка соединения"))
+{ 
+	var sqlCmd = new SqlCommand("Имя Stored Procedure", sqlConn);
+	sqlCmd.CommandType = CommandType.StoredProcedure;
+	sqlCmd.Parameters.AddWithValue("@paramName1", /* Значение параметра */ "");
+	sqlCmd.Parameters.AddWithValue("@paramName2", /* Значение параметра */ "");
+	
+	sqlConn.Open();
+	sqlCmd.ExecuteNonQuery();
+}
+
+Вызов процедуры с параметрами которая возвращает данные:
+using (var sqlConn = new SqlConnection("строка соединения"))
+{ 
+	var sqlCmd = new SqlCommand("Имя Stored Procedure", sqlConn);
+	sqlCmd.CommandType = CommandType.StoredProcedure;
+	sqlCmd.Parameters.AddWithValue("@paramName1", /* Значение параметра */ "");
+	sqlCmd.Parameters.AddWithValue("@paramName2", /* Значение параметра */ "");
+	
+	sqlConn.Open();
+	using (SqlDataReader dr = sqlCmd.ExecuteReader())
+	{
+		while (dr.Read())
+		{
+			int intColumn = dr.GetInt32(dr.GetOrdinal("intColumnName"));
+			string stringColumn = dr.GetString(dr.GetOrdinal("stringColumnName"));
+		}
+	}
+}

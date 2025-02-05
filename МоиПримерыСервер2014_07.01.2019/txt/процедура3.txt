@@ -1,0 +1,2 @@
+cmd.Parameters.AddWithValue("@Expiry", cmbox.SelectedValue.ToString()); and also try
+cmd.Parameters.AddWithValue("@Expiry", cmbExpiryDate.SelectedValue.ToString("MM-dd-yyyy"));

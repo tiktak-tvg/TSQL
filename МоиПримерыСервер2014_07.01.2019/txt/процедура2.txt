@@ -1,0 +1,33 @@
+const string StringDate = "12/12/09 11:04:32";
+            DateTime yourDate;
+            if (DateTime.TryParse(StringDate, out yourDate))
+            {
+                const int YourId = 1;
+
+                const string ConnetionString =
+                    @"Data Source=.\sqlexpress;Initial Catalog=SandBox;Integrated Security=True;Pooling=False";
+                const string Sql = "UPDATE YourTable SET birthday = @adate where id = @id";
+
+                var cnn = new SqlConnection(ConnetionString);
+                try
+                {
+                    cnn.Open();
+                    var cmd = new SqlCommand(Sql, cnn);
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = YourId;
+                    cmd.Parameters.Add("@adate", SqlDbType.DateTime).Value = yourDate;
+                    int nrOfRowsUpdated = cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    cnn.Close();
+                    Console.WriteLine(
+                        " ExecuteNonQuery in SqlCommand executed !! nrOfRowsUpdated : {0}", nrOfRowsUpdated);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Something went wrong : {0} ", ex);
+                }
+            } 
+            else
+            {
+                Console.WriteLine("Unable to parse string to valid date");
+            }
+            Console.ReadLine();
