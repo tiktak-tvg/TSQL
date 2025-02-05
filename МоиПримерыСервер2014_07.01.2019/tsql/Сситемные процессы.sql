@@ -1,0 +1,2 @@
+SELECT * FROM SYSPROCESSES
+ORDER BY lastwaittype
