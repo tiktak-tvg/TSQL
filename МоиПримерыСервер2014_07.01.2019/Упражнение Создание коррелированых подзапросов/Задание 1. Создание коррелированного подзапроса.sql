@@ -1,8 +1,8 @@
---Задание 1. Создание коррелированного подзапроса
---1.	Создайте запрос с коррелированным подзапросом, который возвращает фамилии и имена сотрудников (поля LastName и FirstName таблицы Person.Person), 
---      бонус которых (поле Bonus таблицы Sales.SalesPerson) превышает $5000.
---2.	Используйте внутреннее объединение таблицы Person.Person с таблицей HumanResources.Employee для получения необходимых полей.
---3.	Выполните запрос и просмотрите результаты.
+--Р—Р°РґР°РЅРёРµ 1. РЎРѕР·РґР°РЅРёРµ РєРѕСЂСЂРµР»РёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕРґР·Р°РїСЂРѕСЃР°
+--1.	РЎРѕР·РґР°Р№С‚Рµ Р·Р°РїСЂРѕСЃ СЃ РєРѕСЂСЂРµР»РёСЂРѕРІР°РЅРЅС‹Рј РїРѕРґР·Р°РїСЂРѕСЃРѕРј, РєРѕС‚РѕСЂС‹Р№ РІРѕР·РІСЂР°С‰Р°РµС‚ С„Р°РјРёР»РёРё Рё РёРјРµРЅР° СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ (РїРѕР»СЏ LastName Рё FirstName С‚Р°Р±Р»РёС†С‹ Person.Person), 
+--      Р±РѕРЅСѓСЃ РєРѕС‚РѕСЂС‹С… (РїРѕР»Рµ Bonus С‚Р°Р±Р»РёС†С‹ Sales.SalesPerson) РїСЂРµРІС‹С€Р°РµС‚ $5000.
+--2.	РСЃРїРѕР»СЊР·СѓР№С‚Рµ РІРЅСѓС‚СЂРµРЅРЅРµРµ РѕР±СЉРµРґРёРЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ Person.Person СЃ С‚Р°Р±Р»РёС†РµР№ HumanResources.Employee РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РЅРµРѕР±С…РѕРґРёРјС‹С… РїРѕР»РµР№.
+--3.	Р’С‹РїРѕР»РЅРёС‚Рµ Р·Р°РїСЂРѕСЃ Рё РїСЂРѕСЃРјРѕС‚СЂРёС‚Рµ СЂРµР·СѓР»СЊС‚Р°С‚С‹.
 
 Use AdventureWorks2014;
 Go
@@ -14,7 +14,7 @@ Select Bonus
 	From Sales.SalesPerson 
 		Where  Bonus = 5000.0;
 Go
--- Запрос через объединение.
+-- Р—Р°РїСЂРѕСЃ С‡РµСЂРµР· РѕР±СЉРµРґРёРЅРµРЅРёРµ.
 Select LastName, FirstName 
 	From Person.Person pp
 	Inner Join Sales.SalesPerson ss
@@ -22,7 +22,7 @@ Select LastName, FirstName
 		Where Bonus = 5000.0;
 Go
 
--- Запрос с коррелированным подзапросом.
+-- Р—Р°РїСЂРѕСЃ СЃ РєРѕСЂСЂРµР»РёСЂРѕРІР°РЅРЅС‹Рј РїРѕРґР·Р°РїСЂРѕСЃРѕРј.
 Select LastName, FirstName 
 	From Person.Person As pp
 	Inner Join HumanResources.Employee  As hre
@@ -33,7 +33,7 @@ Select LastName, FirstName
 					Where hre.BusinessEntityID = ss.BusinessEntityID);
 		
 Go
--- Или так.
+-- РР»Рё С‚Р°Рє.
 Select LastName, FirstName
 	From Person.Person pp
 	Inner Join HumanResources.Employee hr
