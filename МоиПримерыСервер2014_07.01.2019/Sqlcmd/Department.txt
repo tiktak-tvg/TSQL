@@ -1,6 +1,6 @@
-sqlcmd -S  Leon -i  E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.sql -o E:\Lessons2\TSQL\МоиПримерыСервер2014_07.01.2019\Select\Department.txt
+sqlcmd -S  Leon -i  E:\Lessons2\TSQL\2014_07.01.2019\Select\Department.sql -o E:\Lessons2\TSQL\2014_07.01.2019\Select\Department.txt
 
-Контекст базы данных изменен на "AdventureWorks2014".
+ГЉГ®Г­ГІГҐГЄГ±ГІ ГЎГ Г§Г» Г¤Г Г­Г­Г»Гµ ГЁГ§Г¬ГҐГ­ГҐГ­ Г­Г  "AdventureWorks2014".
 Name                                               GroupName                                         
 -------------------------------------------------- --------------------------------------------------
 Engineering                                        Research and Development                          
