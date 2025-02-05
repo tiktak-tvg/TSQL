@@ -1,32 +1,32 @@
-Вызов процедуры без параметров которая ничего не возвращает:
-using (var sqlConn = new SqlConnection("строка соединения"))
+Р’С‹Р·РѕРІ РїСЂРѕС†РµРґСѓСЂС‹ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕС‚РѕСЂР°СЏ РЅРёС‡РµРіРѕ РЅРµ РІРѕР·РІСЂР°С‰Р°РµС‚:
+using (var sqlConn = new SqlConnection("СЃС‚СЂРѕРєР° СЃРѕРµРґРёРЅРµРЅРёСЏ"))
 { 
-	var sqlCmd = new SqlCommand("Имя Stored Procedure", sqlConn);
+	var sqlCmd = new SqlCommand("РРјСЏ Stored Procedure", sqlConn);
 	sqlCmd.CommandType = CommandType.StoredProcedure;
 	
 	sqlConn.Open();
 	sqlCmd.ExecuteNonQuery();
 }
 
-Вызов процедуры с параметрами которая ничего не возвращает:
-using (var sqlConn = new SqlConnection("строка соединения"))
+Р’С‹Р·РѕРІ РїСЂРѕС†РµРґСѓСЂС‹ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РєРѕС‚РѕСЂР°СЏ РЅРёС‡РµРіРѕ РЅРµ РІРѕР·РІСЂР°С‰Р°РµС‚:
+using (var sqlConn = new SqlConnection("СЃС‚СЂРѕРєР° СЃРѕРµРґРёРЅРµРЅРёСЏ"))
 { 
-	var sqlCmd = new SqlCommand("Имя Stored Procedure", sqlConn);
+	var sqlCmd = new SqlCommand("РРјСЏ Stored Procedure", sqlConn);
 	sqlCmd.CommandType = CommandType.StoredProcedure;
-	sqlCmd.Parameters.AddWithValue("@paramName1", /* Значение параметра */ "");
-	sqlCmd.Parameters.AddWithValue("@paramName2", /* Значение параметра */ "");
+	sqlCmd.Parameters.AddWithValue("@paramName1", /* Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° */ "");
+	sqlCmd.Parameters.AddWithValue("@paramName2", /* Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° */ "");
 	
 	sqlConn.Open();
 	sqlCmd.ExecuteNonQuery();
 }
 
-Вызов процедуры с параметрами которая возвращает данные:
-using (var sqlConn = new SqlConnection("строка соединения"))
+Р’С‹Р·РѕРІ РїСЂРѕС†РµРґСѓСЂС‹ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РєРѕС‚РѕСЂР°СЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ:
+using (var sqlConn = new SqlConnection("СЃС‚СЂРѕРєР° СЃРѕРµРґРёРЅРµРЅРёСЏ"))
 { 
-	var sqlCmd = new SqlCommand("Имя Stored Procedure", sqlConn);
+	var sqlCmd = new SqlCommand("РРјСЏ Stored Procedure", sqlConn);
 	sqlCmd.CommandType = CommandType.StoredProcedure;
-	sqlCmd.Parameters.AddWithValue("@paramName1", /* Значение параметра */ "");
-	sqlCmd.Parameters.AddWithValue("@paramName2", /* Значение параметра */ "");
+	sqlCmd.Parameters.AddWithValue("@paramName1", /* Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° */ "");
+	sqlCmd.Parameters.AddWithValue("@paramName2", /* Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° */ "");
 	
 	sqlConn.Open();
 	using (SqlDataReader dr = sqlCmd.ExecuteReader())
