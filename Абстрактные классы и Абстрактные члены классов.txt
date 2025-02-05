@@ -1,10 +1,10 @@
  public abstract class Animal
 
- class Animal без модификатора доступа является internal
+ class Animal Р±РµР· РјРѕРґРёС„РёРєР°С‚РѕСЂР° РґРѕСЃС‚СѓРїР° СЏРІР»СЏРµС‚СЃСЏ internal
 
- abstract - метод заставляет переопределить себя
+ abstract - РјРµС‚РѕРґ Р·Р°СЃС‚Р°РІР»СЏРµС‚ РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ СЃРµР±СЏ
 
-Чтобы работат с абстактными методами, обязатель должен быть класс астрактный
+Р§С‚РѕР±С‹ СЂР°Р±РѕС‚Р°С‚ СЃ Р°Р±СЃС‚Р°РєС‚РЅС‹РјРё РјРµС‚РѕРґР°РјРё, РѕР±СЏР·Р°С‚РµР»СЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РєР»Р°СЃСЃ Р°СЃС‚СЂР°РєС‚РЅС‹Р№
 
 using System;
 
@@ -20,9 +20,9 @@ namespace AbstractClasses
 
             //Lion lion = new Lion();
             //lion.Feed2();
-            //массив объектов совместимых с Animal
+            //РјР°СЃСЃРёРІ РѕР±СЉРµРєС‚РѕРІ СЃРѕРІРјРµСЃС‚РёРјС‹С… СЃ Animal
             Animal[] animals = { new Tigr(),new Lion(), new Lion(), new Tigr()};
-            //перечислить все элементф в массиве
+            //РїРµСЂРµС‡РёСЃР»РёС‚СЊ РІСЃРµ СЌР»РµРјРµРЅС‚С„ РІ РјР°СЃСЃРёРІРµ
             foreach (Animal animal in animals)
             {
                animal.Feed2();
@@ -40,9 +40,9 @@ namespace AbstractClasses
        public string Name { get; set; }
 
        public virtual void Feed()
-       { Console.WriteLine("Вы покормили животное\n"); }
+       { Console.WriteLine("Р’С‹ РїРѕРєРѕСЂРјРёР»Рё Р¶РёРІРѕС‚РЅРѕРµ\n"); }
 
-       public abstract void Feed2();//метод заставляет переопределить себя,т.е. перекладывает свои обязанности на дочерние классы
+       public abstract void Feed2();//РјРµС‚РѕРґ Р·Р°СЃС‚Р°РІР»СЏРµС‚ РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ СЃРµР±СЏ,С‚.Рµ. РїРµСЂРµРєР»Р°РґС‹РІР°РµС‚ СЃРІРѕРё РѕР±СЏР·Р°РЅРЅРѕСЃС‚Рё РЅР° РґРѕС‡РµСЂРЅРёРµ РєР»Р°СЃСЃС‹
        
     }
 }
@@ -53,15 +53,15 @@ namespace AbstractClasses
 {
     class Tigr:Animal
     {
-        //метод предлагает переопределить себя
+        //РјРµС‚РѕРґ РїСЂРµРґР»Р°РіР°РµС‚ РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ СЃРµР±СЏ
         public override void Feed()
 {
     base.Feed();
-    Console.WriteLine("Тигра покормили мясом");
+    Console.WriteLine("РўРёРіСЂР° РїРѕРєРѕСЂРјРёР»Рё РјСЏСЃРѕРј");
 }
         public override void Feed2()
         {
-            Console.WriteLine("Мы покормили тигра мясом");
+            Console.WriteLine("РњС‹ РїРѕРєРѕСЂРјРёР»Рё С‚РёРіСЂР° РјСЏСЃРѕРј");
         }
     }
 }
@@ -78,7 +78,7 @@ namespace AbstractClasses
         }
         public override void Feed2()
         {
-            Console.WriteLine("Мы покормили льва мясом");
+            Console.WriteLine("РњС‹ РїРѕРєРѕСЂРјРёР»Рё Р»СЊРІР° РјСЏСЃРѕРј");
         }
     }
 }
