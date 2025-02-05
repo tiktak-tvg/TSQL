@@ -1,4 +1,4 @@
-Как найти активные SQL соединения.
+
 select
     db_name(dbid) as [Database Name],
     count(dbid) as [No Of Connections],
@@ -9,7 +9,7 @@ where
     dbid > 0
 group by
     dbid, loginame
-Как убить SQL соединения.
+
 set nocount on
 declare @databasename varchar(100)
 declare @query varchar(max)
