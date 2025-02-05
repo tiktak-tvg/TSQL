@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Delegates
 {
-    //создаем делегат метода SimpleMethod
+    //СЃРѕР·РґР°РµРј РґРµР»РµРіР°С‚ РјРµС‚РѕРґР° SimpleMethod
     public delegate void MyDelegate();
 
     public delegate void MyDelegate2(string name);
@@ -17,33 +17,33 @@ namespace Delegates
     {
         static void Main(string[] args)
         {
-            //вызов простого метода
+            //РІС‹Р·РѕРІ РїСЂРѕСЃС‚РѕРіРѕ РјРµС‚РѕРґР°
             SimpleMethod();
-            //вызов метода через делегат без параметров
+            //РІС‹Р·РѕРІ РјРµС‚РѕРґР° С‡РµСЂРµР· РґРµР»РµРіР°С‚ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
             MyDelegate myDelegate = SimpleMethod;
             myDelegate();
-            //вызов метода через делегат с параметрами string и int
+            //РІС‹Р·РѕРІ РјРµС‚РѕРґР° С‡РµСЂРµР· РґРµР»РµРіР°С‚ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё string Рё int
             MyDelegate2 myDelegate2 = SimpleMethod2;
-            myDelegate2("Виталий");
+            myDelegate2("Р’РёС‚Р°Р»РёР№");
             MyDelegate3 myDelegate3 = new MyDelegate3(SimpleMethod3);
             myDelegate3(5);
 
         }
 
-        //создаем простой метод
+        //СЃРѕР·РґР°РµРј РїСЂРѕСЃС‚РѕР№ РјРµС‚РѕРґ
         static void SimpleMethod()
         {
-            Console.WriteLine("Простой пример метода");
+            Console.WriteLine("РџСЂРѕСЃС‚РѕР№ РїСЂРёРјРµСЂ РјРµС‚РѕРґР°");
         }
-        //создаем простой метод 2 с параметрами
+        //СЃРѕР·РґР°РµРј РїСЂРѕСЃС‚РѕР№ РјРµС‚РѕРґ 2 СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
         static void SimpleMethod2(string name)
         {
-            Console.WriteLine("\nПараметр типа string {0}.....", name);
+            Console.WriteLine("\nРџР°СЂР°РјРµС‚СЂ С‚РёРїР° string {0}.....", name);
         }
-        //создаем простой метод 3 с параметрами
+        //СЃРѕР·РґР°РµРј РїСЂРѕСЃС‚РѕР№ РјРµС‚РѕРґ 3 СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
         static void SimpleMethod3(int number)
         {
-            Console.WriteLine("Параметр типа int {0}.....\n", number);
+            Console.WriteLine("РџР°СЂР°РјРµС‚СЂ С‚РёРїР° int {0}.....\n", number);
         }
     }
 
