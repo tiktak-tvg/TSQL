@@ -1,11 +1,11 @@
---Задание 1. Создание и выполнение запроса с использованием оператора PIVOT
---1.	Создайте запрос, который возвращает табличное значение из таблицы Production.Product.
---2.	Используйте оператор PIVOT.
---3.	Результирующая таблица должна иметь поля с именами Name, RED, BLUE и BLACK и содержать значения полей SafetyStockLevel, Color, Name из таблицы Production.Product.
---4.	Результирующий набор должен включать только те записи из таблицы Production.Product, для которых поле Name содержит строку 'Helmet'.
---5.	Просуммируйте значения в поле SafetyStockLevel по цветам Red, Blue and Black.
---6.	Отсортируйте результирующий набор по полю Name.
---7.	Выполните запрос и просмотрите результаты.
+--Р—Р°РґР°РЅРёРµ 1. РЎРѕР·РґР°РЅРёРµ Рё РІС‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР° СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕРїРµСЂР°С‚РѕСЂР° PIVOT
+--1.	РЎРѕР·РґР°Р№С‚Рµ Р·Р°РїСЂРѕСЃ, РєРѕС‚РѕСЂС‹Р№ РІРѕР·РІСЂР°С‰Р°РµС‚ С‚Р°Р±Р»РёС‡РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР· С‚Р°Р±Р»РёС†С‹ Production.Product.
+--2.	РСЃРїРѕР»СЊР·СѓР№С‚Рµ РѕРїРµСЂР°С‚РѕСЂ PIVOT.
+--3.	Р РµР·СѓР»СЊС‚РёСЂСѓСЋС‰Р°СЏ С‚Р°Р±Р»РёС†Р° РґРѕР»Р¶РЅР° РёРјРµС‚СЊ РїРѕР»СЏ СЃ РёРјРµРЅР°РјРё Name, RED, BLUE Рё BLACK Рё СЃРѕРґРµСЂР¶Р°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№ SafetyStockLevel, Color, Name РёР· С‚Р°Р±Р»РёС†С‹ Production.Product.
+--4.	Р РµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ РЅР°Р±РѕСЂ РґРѕР»Р¶РµРЅ РІРєР»СЋС‡Р°С‚СЊ С‚РѕР»СЊРєРѕ С‚Рµ Р·Р°РїРёСЃРё РёР· С‚Р°Р±Р»РёС†С‹ Production.Product, РґР»СЏ РєРѕС‚РѕСЂС‹С… РїРѕР»Рµ Name СЃРѕРґРµСЂР¶РёС‚ СЃС‚СЂРѕРєСѓ 'Helmet'.
+--5.	РџСЂРѕСЃСѓРјРјРёСЂСѓР№С‚Рµ Р·РЅР°С‡РµРЅРёСЏ РІ РїРѕР»Рµ SafetyStockLevel РїРѕ С†РІРµС‚Р°Рј Red, Blue and Black.
+--6.	РћС‚СЃРѕСЂС‚РёСЂСѓР№С‚Рµ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ РЅР°Р±РѕСЂ РїРѕ РїРѕР»СЋ Name.
+--7.	Р’С‹РїРѕР»РЅРёС‚Рµ Р·Р°РїСЂРѕСЃ Рё РїСЂРѕСЃРјРѕС‚СЂРёС‚Рµ СЂРµР·СѓР»СЊС‚Р°С‚С‹.
 
 Use AdventureWorks2014;
 Go
@@ -21,7 +21,7 @@ Select Name, Sum(SafetyStockLevel) As N'SafetyStockLevel', Color As N'Color'
 Go
  
 
-Select 'SafetyStockLevel' As N'Цвета',[Black], [Blue], [Red]
+Select 'SafetyStockLevel' As N'Р¦РІРµС‚Р°',[Black], [Blue], [Red]
 	From 
 		(Select SafetyStockLevel,Color
 			From Production.Product
@@ -59,7 +59,7 @@ Select  Color As N'Color',  Sum(SafetyStockLevel) As N'SafetyStockLevel'
 Go	
 
 -- Pivot
-Select N'Уровень страхового запаса' As N'Цвета',[Black],[Blue],[Red]
+Select N'РЈСЂРѕРІРµРЅСЊ СЃС‚СЂР°С…РѕРІРѕРіРѕ Р·Р°РїР°СЃР°' As N'Р¦РІРµС‚Р°',[Black],[Blue],[Red]
 	From	
 		(Select Color, SafetyStockLevel
 			From Production.Product
@@ -71,7 +71,7 @@ Select N'Уровень страхового запаса' As N'Цвета',[Black],[Blue],[Red]
 		) As tbpv
 Go
 
-Select Color As N'Цвета', SafetyStockLevel As N'Уровень страхового запаса'
+Select Color As N'Р¦РІРµС‚Р°', SafetyStockLevel As N'РЈСЂРѕРІРµРЅСЊ СЃС‚СЂР°С…РѕРІРѕРіРѕ Р·Р°РїР°СЃР°'
 			From Production.Product
 				Where Name Like '%Helmet%';
 Go	
