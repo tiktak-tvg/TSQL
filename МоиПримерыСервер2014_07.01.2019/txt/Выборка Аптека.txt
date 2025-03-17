@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
 
             try
             {
-                pat = "Data Source=192.168.0.205;Initial Catalog=WSklad;User ID=sa;Password=gogo156782";
+                pat = "Data Source=192.168.0.205;Initial Catalog=WSklad;User ID=sa;Password=******";
                 reg = "SELECT [Cmp_Name] AS Наименование,[Prt_CurrQnt] AS Количество ,[Str_Price03] AS Цена,[Obj_Name] AS Дата FROM ws_InvFindCmp WHERE [Prt_CurrQnt] > 0 ORDER BY Cmp_Name;";
                 con = new SqlConnection(pat);
                 con.Open();
